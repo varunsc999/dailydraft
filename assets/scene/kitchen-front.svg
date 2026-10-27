@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-86 0 460 170">
+  <!-- Front layer of the kitchen: the back counter and what sits on it. The page draws it over the helper, so they walk behind the counter. Generated from kitchen.svg; keep the two in step. -->
+  <style>
+    .steam { animation: steam 2.6s ease-in-out infinite; opacity: 0; }
+    .s2 { animation-delay: .85s; }
+    .s3 { animation-delay: 1.7s; }
+    @keyframes steam {
+      0% { transform: translateY(6px); opacity: 0; }
+      40% { opacity: .55; }
+      100% { transform: translateY(-16px); opacity: 0; }
+    }
+    .flame { transform-box: fill-box; transform-origin: 50% 100%; animation: flame .18s ease-in-out infinite alternate; }
+    .flame:nth-of-type(2n) { animation-duration: .23s; }
+    @keyframes flame { from { transform: scaleY(.75); } to { transform: scaleY(1.15); } }
+    .ladle { transform-box: view-box; animation: ladle 3.4s ease-in-out infinite; }
+    .l1 { transform-origin: 218px 58px; }
+    .l2 { transform-origin: 236px 58px; animation-delay: -.8s; }
+    .l3 { transform-origin: 270px 58px; animation-delay: -1.7s; }
+    @keyframes ladle { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+    .glowpulse { animation: glow 2.2s ease-in-out infinite; }
+    @keyframes glow { 0%, 100% { opacity: .55; } 50% { opacity: .8; } }
+  </style>
+  <defs>
+    <pattern id="tiles" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="#cfc4b2"/>
+      <rect x=".7" y=".7" width="22.6" height="10.6" rx="1.4" fill="#ede6da"/>
+      <rect x=".7" y=".7" width="22.6" height="3" rx="1.4" fill="#f5f0e7"/>
+      <rect x="-11.3" y="12.7" width="22.6" height="10.6" rx="1.4" fill="#e9e1d4"/>
+      <rect x="12.7" y="12.7" width="22.6" height="10.6" rx="1.4" fill="#e9e1d4"/>
+      <rect x="12.7" y="12.7" width="22.6" height="3" rx="1.4" fill="#f2ece2"/>
+    </pattern>
+    <linearGradient id="steelV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dfe3e8"/>
+      <stop offset=".12" stop-color="#b8bec7"/>
+      <stop offset="1" stop-color="#8b929c"/>
+    </linearGradient>
+    <linearGradient id="steelH" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9aa1ab"/>
+      <stop offset=".35" stop-color="#e2e6ea"/>
+      <stop offset=".6" stop-color="#b3bac3"/>
+      <stop offset="1" stop-color="#8a919b"/>
+    </linearGradient>
+    <linearGradient id="pot" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3b3f45"/>
+      <stop offset=".3" stop-color="#6b7179"/>
+      <stop offset=".55" stop-color="#454a51"/>
+      <stop offset="1" stop-color="#2b2e33"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9c6b43"/>
+      <stop offset="1" stop-color="#6f4628"/>
+    </linearGradient>
+    <linearGradient id="hangiri" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b98a58"/>
+      <stop offset=".4" stop-color="#ddb684"/>
+      <stop offset="1" stop-color="#a87a4a"/>
+    </linearGradient>
+    <radialGradient id="bowlBlue" cx=".35" cy=".3" r=".9">
+      <stop offset="0" stop-color="#6d8fbf"/>
+      <stop offset="1" stop-color="#2d4a78"/>
+    </radialGradient>
+    <radialGradient id="bowlRed" cx=".35" cy=".3" r=".9">
+      <stop offset="0" stop-color="#c76a55"/>
+      <stop offset="1" stop-color="#8a3324"/>
+    </radialGradient>
+    <radialGradient id="bowlCream" cx=".35" cy=".3" r=".9">
+      <stop offset="0" stop-color="#fbf8f2"/>
+      <stop offset="1" stop-color="#d9d1c3"/>
+    </radialGradient>
+    <linearGradient id="bottleGreen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1f3b29"/>
+      <stop offset=".4" stop-color="#3f6b4e"/>
+      <stop offset="1" stop-color="#1a3123"/>
+    </linearGradient>
+    <linearGradient id="bottleWhite" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d8d1c4"/>
+      <stop offset=".4" stop-color="#fbf8f2"/>
+      <stop offset="1" stop-color="#cfc7b8"/>
+    </linearGradient>
+    <radialGradient id="light" cx=".5" cy="-.1" r="1.1">
+      <stop offset="0" stop-color="#fff2d2" stop-opacity=".55"/>
+      <stop offset=".6" stop-color="#ffe2b0" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#7a5a3a" stop-opacity=".25"/>
+    </radialGradient>
+  </defs>
+
+  <!-- back counter -->
+  <rect x="-86" y="126" width="460" height="44" fill="url(#steelV)"/>
+  <rect x="-86" y="126" width="460" height="2" fill="#f1f3f5"/>
+
+  <!-- the rice tub, stove, pot and sink stay on kitchen.svg, behind the helper; only the counter front is drawn over them -->
+</svg>

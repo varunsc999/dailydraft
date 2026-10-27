@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <radialGradient id="p" cx=".4" cy=".3" r=".8"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#d9d2c4"/></radialGradient>
+    <linearGradient id="d" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6f2fa" stop-opacity=".75"/><stop offset="1" stop-color="#a9c3d4" stop-opacity=".45"/></linearGradient>
+  </defs>
+  <ellipse cx="16" cy="25" rx="14" ry="4.6" fill="#000" opacity=".25"/>
+  <ellipse cx="16" cy="23" rx="14" ry="5" fill="url(#p)" stroke="#c9442e" stroke-width="2"/>
+  <path d="M10 22 V16 Q10 14 16 14 Q22 14 22 16 V22 Q22 24 16 24 Q10 24 10 22Z" fill="#1d2c23"/>
+  <ellipse cx="16" cy="15" rx="6" ry="2.2" fill="#f7f2e7"/>
+  <ellipse cx="15.4" cy="15" rx="2.2" ry=".9" fill="#e8784c"/>
+  <path d="M3 23 Q3 5 16 5 Q29 5 29 23" fill="url(#d)" stroke="#fff" stroke-opacity=".8" stroke-width="1"/>
+  <path d="M7 18 Q8 10 14 8" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".9"/>
+  <ellipse cx="16" cy="5.4" rx="2.4" ry="1.2" fill="#fff"/>
+</svg>

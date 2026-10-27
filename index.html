@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>daily draft</title>
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/scene.css?v=2">
+<link rel="stylesheet" href="css/hud.css?v=2">
+<link rel="stylesheet" href="css/play.css?v=4">
+<link rel="stylesheet" href="css/diners.css?v=2">
+<link rel="stylesheet" href="css/screens.css?v=3">
+</head>
+<body>
+
+<!-- shared gradients for the plates drawn on the belt -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="gPorcelain" cx=".42" cy=".3" r=".8">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".7" stop-color="#f2eee6"/>
+      <stop offset="1" stop-color="#d9d2c4"/>
+    </radialGradient>
+    <radialGradient id="gWell" cx=".5" cy=".4" r=".7">
+      <stop offset="0" stop-color="#f7f4ee"/>
+      <stop offset="1" stop-color="#e2dbcd"/>
+    </radialGradient>
+    <linearGradient id="gNori" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#08100b"/>
+      <stop offset=".3" stop-color="#2c4235"/>
+      <stop offset=".55" stop-color="#1a281f"/>
+      <stop offset="1" stop-color="#070c09"/>
+    </linearGradient>
+    <linearGradient id="gRice" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf7"/>
+      <stop offset="1" stop-color="#e4dccb"/>
+    </linearGradient>
+    <linearGradient id="gSalmon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffa36e"/>
+      <stop offset="1" stop-color="#e5683e"/>
+    </linearGradient>
+    <linearGradient id="gTuna" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e2505a"/>
+      <stop offset="1" stop-color="#a8222f"/>
+    </linearGradient>
+    <linearGradient id="gTamago" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe27a"/>
+      <stop offset="1" stop-color="#e8b83a"/>
+    </linearGradient>
+    <linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eaf4fb" stop-opacity=".42"/>
+      <stop offset=".5" stop-color="#cfe2ee" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#b9cfdd" stop-opacity=".3"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div id="stage">
+ <div id="core">
+  <img class="layer" id="kitchen" src="assets/scene/kitchen.svg?v=15" alt="">
+  <div class="rain" id="rainKitchen"></div>
+  <img class="layer" id="helper" src="assets/scene/helper.svg?v=15" alt="">
+  <img class="layer" id="kitchenFront" src="assets/scene/kitchen-front.svg?v=15" alt="">
+  <div class="layer" id="chef"></div>
+  <img class="layer" id="wall" src="assets/scene/wall.svg?v=15" alt="">
+  <div id="menuTags"></div>
+  <div class="rain" id="rainTop"></div>
+  <img class="layer" id="noren" src="assets/scene/noren.svg?v=15" alt="">
+  <img class="layer" id="lanternL" src="assets/scene/lantern-five.svg?v=15" alt="">
+  <img class="layer" id="lanternR" src="assets/scene/lantern-plate.svg?v=15" alt="">
+  <div class="glow" style="left:-43px; top:6px"></div>
+  <div class="glow" style="left:283px; top:6px; animation-delay:-1.5s"></div>
+  <img class="layer" id="counter" src="assets/scene/counter.svg?v=15" alt="">
+
+  <div id="tickets"></div>
+  <div id="seats"></div>
+
+  <div id="belt"></div>
+  <div id="plates"></div>
+  <div id="tap">tap to open</div>
+
+  <div id="matGlow"></div>
+  <div id="sheet">
+    <div class="cat" id="cat"></div>
+    <div class="name" id="name"></div>
+    <div class="sheet-foot">
+      <div class="sticker" id="sticker"></div>
+      <div class="afford" id="afford">not enough cash left</div>
+      <div class="timer" id="timer">
+        <svg viewBox="0 0 40 40">
+          <circle cx="20" cy="20" r="16" fill="#fff" stroke="#e7dcc8" stroke-width="4"/>
+          <circle class="bar" id="timerBar" cx="20" cy="20" r="16" fill="none" stroke="#1f2430" stroke-width="4" stroke-linecap="round" stroke-dasharray="100.5" stroke-dashoffset="0"/>
+        </svg>
+        <div class="sec" id="timerSec">10</div>
+      </div>
+    </div>
+  </div>
+  <div id="roll"></div>
+  <div id="sparkle"></div>
+
+  <div id="stack"></div>
+  <div id="stackLabel">your plates</div>
+
+  <div id="controls">
+    <button class="btn" id="btnPass">Let it pass</button>
+    <button class="btn" id="btnTake">Take</button>
+  </div>
+  <button id="skip" hidden>I'm full · skip the rest</button>
+  <div id="bubble"></div>
+ </div>
+  <div id="vignette"></div>
+
+  <div id="hud">
+    <div class="pill"><img class="ico" src="assets/icons/game/coin.svg" alt=""><b id="hudCash">$80</b></div>
+    <div class="pill"><img class="ico" src="assets/icons/game/belt.svg" alt=""><b id="hudPlate">0/20</b></div>
+    <div class="pill audio">
+      <button id="mute" aria-label="Sound effects on" title="Sound effects"><img class="ico" id="muteIco" src="assets/icons/game/sound.svg" alt=""></button>
+      <i></i>
+      <button id="musicBtn" aria-label="Music on" title="Music and rain"><img class="ico" id="musicIco" src="assets/icons/game/music.svg" alt=""></button>
+    </div>
+    <div class="pill room-pill"><img class="ico" id="hudRoomIcon" src="assets/icons/game/trophy.svg" alt=""><span id="hudRoom">Game Day</span></div>
+    <div class="pill mode" id="hudMode">Today's round</div>
+  </div>
+  <div id="streak" title="Your streak"></div>
+
+  <!-- ─── HOME: today's three rooms ─── -->
+  <div class="overlay show" id="home">
+    <div class="scroll">
+      <div class="brand">
+        <div class="logo">daily draft<span>.</span></div>
+        <p>five plates. one bill. no second helpings.</p>
+        <p class="motto"><b>一期一会</b> every plate comes by only once</p>
+      </div>
+      <div class="today">
+        <div><div class="eyebrow">Today's menu · No. <span id="menuNo"></span></div><div id="today"></div></div>
+        <div class="house" id="house"></div>
+      </div>
+      <div class="streak-home" id="streakHome"></div>
+      <div id="roomList"></div>
+      <p class="home-note">Clear all three rooms today for a full house.</p>
+      <div class="card" id="homeShare" hidden>
+        <h3>Share today</h3>
+        <div class="share-box" id="homeShareBox"></div>
+        <button class="big-btn ghost" id="btnHomeCopy">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── ROOM MENU: one room's details before you sit down ─── -->
+  <div class="overlay" id="roomMenu">
+    <div class="scroll" id="roomMenuBody"></div>
+  </div>
+
+  <!-- ─── RESULTS ─── -->
+  <div class="overlay" id="results">
+    <div class="scroll" id="resultsBody"></div>
+  </div>
+
+  <!-- ─── NOTICE: the kitchen is closed, or the connection to the server dropped ─── -->
+  <div class="overlay" id="notice">
+    <div class="scroll"><div class="card notice-card" id="noticeBody"></div></div>
+  </div>
+</div>
+
+<script src="js/config.js?v=3"></script>
+<script src="js/data/rooms.js?v=5"></script>
+<script src="js/backend-config.js?v=3"></script>
+<script src="js/scoring.js?v=2"></script>
+<script src="js/backend.js?v=2"></script>
+<script src="js/stage.js?v=3"></script>
+<script src="js/sound.js?v=2"></script>
+<script src="js/chef.js?v=2"></script>
+<script src="js/sushi.js?v=3"></script>
+<script src="js/belt.js?v=2"></script>
+<script src="js/unroll.js?v=8"></script>
+<script src="js/diners.js?v=2"></script>
+<script src="js/tutorial.js?v=2"></script>
+<script src="js/decisions.js?v=5"></script>
+<script src="js/results.js?v=5"></script>
+<script src="js/round.js?v=2"></script>
+<script src="js/daily.js?v=7"></script>
+<script src="js/home.js?v=2"></script>
+<script src="js/main.js?v=5"></script>
+</body>
+</html>

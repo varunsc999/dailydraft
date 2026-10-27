@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <radialGradient id="g" cx=".45" cy=".4" r=".7"><stop offset="0" stop-color="#fff3c4"/><stop offset=".6" stop-color="#f0c04e"/><stop offset="1" stop-color="#c78f27"/></radialGradient>
+  </defs>
+  <path d="M14 3 Q15.5 12 24 14 Q15.5 16 14 25 Q12.5 16 4 14 Q12.5 12 14 3Z" fill="url(#g)"/>
+  <path d="M24.5 19 Q25.2 23 28.5 24 Q25.2 25 24.5 29 Q23.8 25 20.5 24 Q23.8 23 24.5 19Z" fill="#c9442e"/>
+  <path d="M25 4 Q25.5 6.5 27.5 7 Q25.5 7.5 25 10 Q24.5 7.5 22.5 7 Q24.5 6.5 25 4Z" fill="#f0c04e"/>
+</svg>

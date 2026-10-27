@@ -1,0 +1,148 @@
+/* The stage, the scene layers (kitchen, chef, wall, counter), lantern glows, rain and closing time. */
+
+:root {
+  --ink: #1f2430;
+  --muted: #7a7064;
+  --rice: #fffbf3;
+  --paper: #f7f1e6;
+  --nori: #17221b;
+  --vermilion: #c9442e;
+  --vermilion-dark: #9e3221;
+  --indigo: #22305a;
+  --round: 'Zen Maru Gothic', system-ui, sans-serif;
+  --mono: 'DM Mono', ui-monospace, monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  background: radial-gradient(ellipse at 50% 35%, #33200f, #120b06 75%);
+  font-family: var(--round);
+  color: var(--ink);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/*
+  The game is laid out on a 360×640 core that is scaled to fit the screen.
+  The stage around it grows to the screen's shape (up to 1440×860), and the wall,
+  belt and counter art are drawn wide enough to fill the extra room at the sides.
+*/
+#stage {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: calc(var(--w, 360) * 1px); height: calc(var(--h, 640) * 1px);
+  transform: translate(-50%, -50%) scale(var(--k, 1));
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+  background: #2a190e;
+}
+#stage.fill { border-radius: 0; box-shadow: none; }
+#core {
+  position: absolute;
+  left: calc((var(--w, 360) - 360) / 2 * 1px);
+  top: calc((var(--h, 640) - 640) / 2 * 1px);
+  width: 360px; height: 640px;
+}
+.layer { position: absolute; display: block; pointer-events: none; }
+
+/* depth of field: the kitchen sits slightly out of focus behind the chef */
+#kitchen, #kitchenFront { left: -50px; top: 66px; width: 460px; height: 170px; filter: blur(.8px) saturate(.92); }
+#chef { left: 130px; top: 100px; width: 100px; height: 120px; filter: blur(.25px); }
+#chef svg { width: 100%; height: 100%; display: block; }
+/* a second cook walks back and forth behind the chef */
+#helper { left: -24px; top: 138px; width: 44px; height: 84px; filter: blur(.9px) saturate(.9); animation: walk 26s infinite; }
+/* walks with a little ease at each end, stops to set bowls down, and pivots to turn around */
+@keyframes walk {
+  0%, 5%   { transform: translateX(0) scaleX(1); animation-timing-function: cubic-bezier(.45,0,.55,1); }
+  41%      { transform: translateX(368px) scaleX(1); }
+  47%      { transform: translateX(368px) scaleX(1); animation-timing-function: ease-in-out; }
+  50%, 55% { transform: translateX(368px) scaleX(-1); animation-timing-function: cubic-bezier(.45,0,.55,1); }
+  91%      { transform: translateX(0) scaleX(-1); }
+  95%      { transform: translateX(0) scaleX(-1); animation-timing-function: ease-in-out; }
+  98%, 100% { transform: translateX(0) scaleX(1); }
+}
+#wall { left: -540px; top: -110px; width: 1440px; height: 410px; }
+/* wooden menu tags beside お品書き on the left wall (wide screens): one per category, stamped when you take one */
+#menuTags { position: absolute; left: -314px; top: 50px; display: flex; gap: 8px; pointer-events: none; }
+.mtag {
+  position: relative;
+  width: 30px; height: 150px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #d9bf93, #ecd7b2 50%, #d2b789);
+  box-shadow: 0 2px 4px rgba(0,0,0,.3);
+  transform-origin: 50% 0;
+  animation: strip 6s ease-in-out infinite;
+  animation-delay: var(--d);
+}
+@keyframes strip { 0%, 100% { transform: rotate(-.8deg); } 50% { transform: rotate(.8deg); } }
+.mtag span {
+  position: absolute; left: 0; right: 0; top: 7px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  margin: 0 auto;
+  font-weight: 900; font-size: 10px; letter-spacing: 1.5px; line-height: 1;
+  text-transform: uppercase;
+  color: #2a1a0e;
+  display: flex; align-items: center;
+}
+.mtag i {
+  position: absolute; left: 50%; bottom: 5px;
+  width: 22px; height: 22px; margin-left: -11px;
+  border: 2px solid var(--vermilion);
+  border-radius: 50%;
+  color: var(--vermilion);
+  font-family: var(--mono); font-style: normal; font-size: 9px; font-weight: 500;
+  display: grid; place-items: center;
+  transform: rotate(-12deg);
+  opacity: .9;
+}
+.mtag i.new { animation: hanko .4s cubic-bezier(.3,1.6,.5,1) both; }
+.mtag.dup i { background: rgba(201, 68, 46, .15); }
+#noren { left: -42px; top: 55px; width: 444px; height: 54px; }
+#lanternL { left: 0; top: 16px; width: 34px; height: 96px; }
+#lanternR { left: 326px; top: 16px; width: 34px; height: 96px; }
+.glow {
+  position: absolute;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 140, 90, .28), transparent 65%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: flicker 3s ease-in-out infinite;
+}
+@keyframes flicker { 0%, 100% { opacity: .85; } 50% { opacity: 1; } }
+/* rainy days: rain falls past the kitchen's back window and the high transom window */
+.rain { position: absolute; overflow: hidden; display: none; pointer-events: none; background: linear-gradient(#66737f, #8d99a3); }
+#stage.rainy .rain { display: block; }
+.rain::before {
+  content: ''; position: absolute; inset: -30px -20px;
+  background-image:
+    radial-gradient(.6px 4px at 50% 50%, rgba(235, 244, 252, .85) 60%, transparent 100%),
+    radial-gradient(.5px 3px at 50% 50%, rgba(235, 244, 252, .55) 60%, transparent 100%);
+  background-size: 7px 16px, 11px 23px;
+  background-position: 0 0, 4px 9px;
+  transform: rotate(12deg);
+  animation: rainFall .45s linear infinite;
+}
+@keyframes rainFall { to { background-position: 0 32px, 4px 32px; } }
+.rain::after { content: ''; position: absolute; inset: 0; background: var(--bars); }
+#rainKitchen { left: 336px; top: 112px; width: 64px; height: 46px; filter: blur(.6px); --bars: linear-gradient(90deg, transparent calc(50% - 1.3px), #6b4a2e 0 calc(50% + 1.3px), transparent 0), linear-gradient(transparent calc(50% - 1.3px), #6b4a2e 0 calc(50% + 1.3px), transparent 0); }
+#rainTop { left: 60px; top: -40px; width: 240px; height: 31px; --bars: repeating-linear-gradient(90deg, #4a2f1b 0 1.5px, transparent 1.5px 38.5px, #4a2f1b 38.5px 40px), linear-gradient(transparent calc(50% - 1.5px), #4a2f1b 0 calc(50% + 1.5px), transparent 0); }
+
+/* closing time, while the bill is up: the curtain stirs, the lanterns burn low */
+#lanternL, #lanternR, .glow { transition: filter 1.6s ease; }
+#stage.closing #lanternL, #stage.closing #lanternR { filter: brightness(.7) saturate(.85); }
+#stage.closing .glow { filter: opacity(.35); }
+#stage.closing #noren { transform-origin: 50% 0; animation: norenSway 4.6s ease-in-out infinite; }
+@keyframes norenSway { 0%, 100% { transform: skewX(-1.6deg); } 50% { transform: skewX(1.8deg); } }
+#counter { left: -540px; top: 268px; width: 1440px; height: 482px; }
+#vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 60%, rgba(20, 10, 4, .45));
+  pointer-events: none;
+  z-index: 15;
+}

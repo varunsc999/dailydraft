@@ -1,0 +1,385 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-540 -110 1440 410">
+  <!--
+    Drawn 1440 wide around the 360-wide phone view (x 0–360, y 0–300).
+    The kitchen window spans x −50…410, wider than a phone, so on a phone the kitchen fills the screen
+    and on wider screens the window frame and the side decor come into view.
+    A 16:9 monitor sees about x −390…750, so the main decor sits inside that range.
+  -->
+  <style>
+    .swing { transform-box: fill-box; transform-origin: 50% 0; animation: swing 4.6s ease-in-out infinite; }
+    .swing.b { animation-delay: -2.1s; }
+    @keyframes swing { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+    .strip { transform-box: fill-box; transform-origin: 50% 0; animation: strip 6s ease-in-out infinite; }
+    @keyframes strip { 0%, 100% { transform: rotate(-.8deg); } 50% { transform: rotate(.8deg); } }
+
+    /* beckoning cat: the forearm swings in toward the face from the elbow and the paw curls at the wrist,
+       with a slow-in, quick-out rhythm like the battery-powered ones in shop windows */
+    .forearm { transform-box: view-box; transform-origin: 488px 146px; animation: beckon 1.25s cubic-bezier(.55,0,.35,1) infinite; }
+    @keyframes beckon { 0%, 100% { transform: rotate(3deg); } 50% { transform: rotate(-11deg); } }
+    .pawtip { transform-box: view-box; transform-origin: 495px 117px; animation: curl 1.25s cubic-bezier(.55,0,.35,1) infinite; }
+    @keyframes curl { 0%, 100% { transform: rotate(4deg); } 50% { transform: rotate(-30deg); } }
+    .catglint { animation: glint 6s ease-in-out infinite; }
+    @keyframes glint { 0%, 80%, 100% { opacity: .55; } 88% { opacity: 1; } }
+    .bell { transform-box: view-box; transform-origin: 476px 141px; animation: bell 1.25s ease-in-out infinite; }
+    @keyframes bell { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+  </style>
+  <defs>
+    <pattern id="planks" width="30" height="300" patternUnits="userSpaceOnUse">
+      <rect width="30" height="300" fill="url(#plank)"/>
+      <rect x="29" width="1" height="300" fill="#4e3019"/>
+      <path d="M8 0 Q10 80 7 150 T9 300" stroke="#6a4326" stroke-opacity=".35" stroke-width=".8" fill="none"/>
+      <path d="M19 0 Q17 90 20 170 T18 300" stroke="#6a4326" stroke-opacity=".25" stroke-width=".8" fill="none"/>
+    </pattern>
+    <linearGradient id="plank" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#84593a"/>
+      <stop offset=".45" stop-color="#93663f"/>
+      <stop offset="1" stop-color="#7c5335"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a2416"/>
+      <stop offset="1" stop-color="#2a190e"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a2d1a"/>
+      <stop offset="1" stop-color="#3a2314"/>
+    </linearGradient>
+    <linearGradient id="pass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6c79a"/>
+      <stop offset=".25" stop-color="#d6b07c"/>
+      <stop offset="1" stop-color="#b48a58"/>
+    </linearGradient>
+    <linearGradient id="shadeTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="shadeL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="shadeR" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="porcelain" cx=".4" cy=".35" r=".8">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e2ddd2"/>
+    </radialGradient>
+    <radialGradient id="lamp" cx=".45" cy=".45" r=".6">
+      <stop offset="0" stop-color="#ff9a6e"/>
+      <stop offset=".55" stop-color="#d9502f"/>
+      <stop offset="1" stop-color="#9c2d18"/>
+    </radialGradient>
+    <radialGradient id="lampGlow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#ff8c5a" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#ff8c5a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f1e6cf"/>
+      <stop offset="1" stop-color="#e2d3b4"/>
+    </linearGradient>
+    <!-- glazed ceramic: bright specular core, soft grey falloff -->
+    <radialGradient id="glaze" cx=".36" cy=".3" r=".85">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".45" stop-color="#f6f3ee"/>
+      <stop offset=".8" stop-color="#ddd7cc"/>
+      <stop offset="1" stop-color="#c4bcae"/>
+    </radialGradient>
+    <radialGradient id="glazeHead" cx=".38" cy=".32" r=".8">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#f4f0ea"/>
+      <stop offset="1" stop-color="#d3ccbf"/>
+    </radialGradient>
+    <linearGradient id="glazeArm" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d9d2c6"/>
+      <stop offset=".4" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#d0c8bb"/>
+    </linearGradient>
+    <radialGradient id="gold" cx=".35" cy=".3" r=".8">
+      <stop offset="0" stop-color="#fff0b8"/>
+      <stop offset=".45" stop-color="#e8bc4a"/>
+      <stop offset="1" stop-color="#9c7418"/>
+    </radialGradient>
+    <linearGradient id="collar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e0573f"/>
+      <stop offset="1" stop-color="#9a2a1b"/>
+    </linearGradient>
+    <radialGradient id="catEye" cx=".45" cy=".4" r=".6">
+      <stop offset="0" stop-color="#e8d05a"/>
+      <stop offset="1" stop-color="#8a9a2a"/>
+    </radialGradient>
+    <linearGradient id="sake" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d8d1c4"/>
+      <stop offset=".4" stop-color="#fbf8f2"/>
+      <stop offset="1" stop-color="#cfc7b8"/>
+    </linearGradient>
+    <!-- katana -->
+    <linearGradient id="saya" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5a5f6a"/>
+      <stop offset=".3" stop-color="#22252c"/>
+      <stop offset="1" stop-color="#0c0d10"/>
+    </linearGradient>
+    <pattern id="ito" width="7" height="8" patternUnits="userSpaceOnUse">
+      <rect width="7" height="8" fill="#e9dfc8"/>
+      <path d="M0 0 L3.5 4 L7 0 M0 8 L3.5 4 L7 8" stroke="#1e2a4a" stroke-width="2.4" fill="none"/>
+    </pattern>
+    <radialGradient id="tsuba" cx=".4" cy=".35" r=".8">
+      <stop offset="0" stop-color="#d4b46a"/>
+      <stop offset="1" stop-color="#5c4416"/>
+    </radialGradient>
+    <!-- swordfish -->
+    <linearGradient id="fishBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#25344f"/>
+      <stop offset=".38" stop-color="#4a6585"/>
+      <stop offset=".62" stop-color="#9fb2c4"/>
+      <stop offset="1" stop-color="#e6ecef"/>
+    </linearGradient>
+    <linearGradient id="fishFin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b2840"/>
+      <stop offset="1" stop-color="#3a5070"/>
+    </linearGradient>
+    <linearGradient id="plaque" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6a4226"/>
+      <stop offset="1" stop-color="#3e2614"/>
+    </linearGradient>
+  </defs>
+
+  <!-- wood wall with the kitchen window cut out -->
+  <path fill-rule="evenodd" fill="url(#planks)" d="M-540 -110 H900 V300 H-540Z M-50 66 H410 V218 H-50Z"/>
+
+  <!-- soft shadow cast into the kitchen opening -->
+  <rect x="-50" y="66" width="460" height="26" fill="url(#shadeTop)"/>
+  <rect x="-50" y="66" width="14" height="152" fill="url(#shadeL)"/>
+  <rect x="396" y="66" width="14" height="152" fill="url(#shadeR)"/>
+
+  <!-- window frame -->
+  <path fill-rule="evenodd" fill="url(#frame)" d="M-58 58 H418 V226 H-58Z M-50 66 H410 V218 H-50Z"/>
+  <path d="M-58 58 H418" stroke="#6a4428" stroke-width="1.5"/>
+
+  <!-- the pass: a wooden shelf the chef serves over -->
+  <rect x="-62" y="212" width="484" height="22" rx="2" fill="url(#pass)"/>
+  <rect x="-62" y="212" width="484" height="2" fill="#f2dcb7"/>
+  <rect x="-62" y="234" width="484" height="5" fill="#000" opacity=".22"/>
+
+  <!-- a high transom window above the beam, only seen on tall screens; the page lays rain over it on rainy days -->
+  <rect x="54" y="-45" width="252" height="40" rx="2" fill="#4a2f1b"/>
+  <rect x="60" y="-40" width="240" height="31" fill="#d6e6ee"/>
+  <rect x="60" y="-40" width="240" height="13" fill="#e8f1f4"/>
+  <path d="M100 -40 V-9 M140 -40 V-9 M180 -40 V-9 M220 -40 V-9 M260 -40 V-9 M60 -24.5 H300" stroke="#4a2f1b" stroke-width="3"/>
+  <rect x="50" y="-6" width="260" height="5" rx="1" fill="#5a3a22"/>
+
+  <!-- ceiling beams -->
+  <rect x="-540" y="-110" width="1440" height="18" fill="url(#beam)"/>
+  <rect x="-540" y="-92" width="1440" height="4" fill="#000" opacity=".25"/>
+  <rect x="-540" width="1440" height="22" fill="url(#beam)"/>
+  <rect x="-540" y="22" width="1440" height="5" fill="#000" opacity=".25"/>
+
+  <!-- plate price board -->
+  <rect x="64" y="244" width="232" height="22" rx="3" fill="#2f1d11"/>
+  <rect x="64" y="244" width="232" height="22" rx="3" fill="none" stroke="#5a3a22" stroke-width="1"/>
+  <g font-family="Zen Maru Gothic, Segoe UI, sans-serif" font-weight="700" font-size="10" fill="#efe4d2">
+    <ellipse cx="82" cy="255" rx="6" ry="4.4" fill="url(#porcelain)" stroke="#bdb5a6" stroke-width="2.4"/><text x="91" y="258.5">$5</text>
+    <ellipse cx="125" cy="255" rx="6" ry="4.4" fill="url(#porcelain)" stroke="#5c9a6a" stroke-width="2.4"/><text x="134" y="258.5">$10</text>
+    <ellipse cx="172" cy="255" rx="6" ry="4.4" fill="url(#porcelain)" stroke="#4473b4" stroke-width="2.4"/><text x="181" y="258.5">$15</text>
+    <ellipse cx="219" cy="255" rx="6" ry="4.4" fill="url(#porcelain)" stroke="#8459ad" stroke-width="2.4"/><text x="228" y="258.5">$20</text>
+    <ellipse cx="265" cy="255" rx="6" ry="4.4" fill="url(#porcelain)" stroke="#c99a35" stroke-width="2.4"/><text x="274" y="258.5">$30</text>
+  </g>
+
+  <!-- ═══ LEFT SIDE ═══ -->
+
+  <!-- お品書き "the menu". The page hangs one wooden tag per category of the current room beside it (#menuTags). -->
+  <rect x="-356" y="44" width="232" height="6" rx="3" fill="#4a2d1a"/>
+  <g class="strip" font-family="Zen Maru Gothic, Yu Gothic, sans-serif" font-weight="900" fill="#f3e6cc" text-anchor="middle">
+    <rect x="-352" y="50" width="30" height="150" rx="2" fill="#2a1a0e"/>
+    <text x="-337" y="76" font-size="14">お</text><text x="-337" y="96" font-size="14">品</text><text x="-337" y="116" font-size="14">書</text><text x="-337" y="136" font-size="14">き</text>
+  </g>
+
+  <!-- katana on a wall rack under the menu: a gentle arch along y = 232, highest in the middle -->
+  <g>
+    <!-- rack arms coming out of the wall, same height on both sides -->
+    <rect x="-298" y="232" width="8" height="16" rx="1.5" fill="#3a2314"/>
+    <rect x="-194" y="232.85" width="8" height="16" rx="1.5" fill="#3a2314"/>
+    <ellipse cx="-244" cy="244" rx="104" ry="3.4" fill="#000" opacity=".2"/>
+    <!-- tsuka (handle): diamond wrap between a collar and a gold end cap -->
+    <g transform="translate(0 1.48) rotate(-1.90 -353 232)">
+    <rect x="-376" y="228" width="50" height="8" fill="url(#ito)"/>
+    <path d="M-376 228 H-326 M-376 236 H-326" stroke="#1e2a4a" stroke-width="1"/>
+    <path d="M-376 227.6 H-380 Q-383 232 -380 236.4 H-376Z" fill="#b8902e"/>
+    <rect x="-328" y="227.6" width="3" height="8.8" fill="#b8902e"/>
+    </g>
+    <!-- tsuba (guard) and habaki (collar) -->
+    <g transform="translate(0 0.59) rotate(-1.20 -320 232)">
+    <ellipse cx="-322.6" cy="232" rx="2.6" ry="8" fill="url(#tsuba)"/>
+    <rect x="-320" y="228.6" width="5" height="6.8" fill="#c9a04a"/>
+    </g>
+    <!-- saya (scabbard): straight black lacquer with a rounded end -->
+    <path d="M-315 228.89 Q-233.50 227.33 -152.00 230.74 Q-147 231.16 -147 234.56 Q-147 237.96 -152 237.94 Q-233.50 234.53 -315.00 236.09Z" fill="url(#saya)"/>
+    <path d="M-315 229.89 Q-233.50 228.33 -152.00 231.74" stroke="#9aa1ab" stroke-width=".6" opacity=".6" fill="none"/>
+    <rect x="-156" y="228.4" width="4" height="7.2" fill="#2a2018" transform="translate(0 2.26) rotate(2.35 -154 232)"/>
+    <!-- sageo: a red silk band tied round the scabbard between the cradles, knotted underneath with two soft tails -->
+    <rect x="-262" y="227.6" width="9" height="8.8" rx="1.4" fill="#b3372a"/>
+    <path d="M-262 229.6 H-253" stroke="#e0705c" stroke-width=".9" opacity=".8"/>
+    <path d="M-262 234.8 H-253" stroke="#7a2116" stroke-width=".7" opacity=".6"/>
+    <!-- tails: ribbons hanging down and slightly apart, with notched ends -->
+    <path d="M-259.6 237 Q-261.6 243 -263.8 251.6 L-261.6 250.4 L-260 252.2 Q-258.6 244 -257.4 237.6Z" fill="#a52f23"/>
+    <path d="M-256.4 237.6 Q-255 244 -253.2 251.8 L-251.8 249.8 L-249.6 250.8 Q-252.6 243 -254.6 237Z" fill="#c2402f"/>
+    <path d="M-255.4 239 Q-254 244.6 -252.4 250" stroke="#e0705c" stroke-width=".5" fill="none" opacity=".7"/>
+    <!-- the knot itself -->
+    <ellipse cx="-257.5" cy="237.6" rx="3.2" ry="2.4" fill="#b8392b"/>
+    <path d="M-260 237.2 Q-257.5 239.6 -255 237.2" stroke="#7a2116" stroke-width=".55" fill="none"/>
+    <ellipse cx="-258.4" cy="236.8" rx="1.1" ry=".55" fill="#ef8a74" opacity=".8"/>
+    <!-- cradles wrap round the scabbard -->
+    <path d="M-300 230 Q-300 237.6 -294 237.6 Q-288 237.6 -288 230" stroke="#5a3a22" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    <path d="M-196 230 Q-196 237.6 -190 237.6 Q-184 237.6 -184 230" stroke="#5a3a22" stroke-width="2.4" fill="none" stroke-linecap="round" transform="translate(0 0.85)"/>
+  </g>
+
+  <!-- a plain hanging lantern between the menu and the window -->
+  <ellipse cx="-92" cy="186" rx="56" ry="56" fill="url(#lampGlow)"/>
+  <g class="swing">
+    <line x1="-92" y1="16" x2="-92" y2="150" stroke="#1e120a" stroke-width="1.6"/>
+    <rect x="-100" y="148" width="16" height="6" rx="1.5" fill="#2a190e"/>
+    <ellipse cx="-92" cy="174" rx="15.5" ry="21" fill="url(#lamp)"/>
+    <path d="M-106 164 Q-92 160 -78 164 M-107 174 Q-92 170 -77 174 M-106 184 Q-92 180 -78 184" stroke="#7d2413" stroke-opacity=".45" stroke-width=".8" fill="none"/>
+    <rect x="-100" y="193" width="16" height="6" rx="1.5" fill="#2a190e"/>
+  </g>
+
+  <!-- framed wave print (ultra-wide screens) -->
+  <rect x="-528" y="62" width="150" height="112" rx="3" fill="#2a190e"/>
+  <rect x="-520" y="70" width="134" height="96" fill="url(#sea)"/>
+  <circle cx="-420" cy="96" r="11" fill="#d9502f" opacity=".85"/>
+  <path d="M-520 166 V140 Q-506 112 -478 116 Q-456 120 -462 136 Q-472 130 -478 138 Q-456 146 -436 138 Q-416 130 -400 142 Q-392 148 -386 146 V166Z" fill="#2a3a66"/>
+  <path d="M-520 152 Q-496 140 -476 150 Q-456 160 -436 150 Q-416 140 -386 152" stroke="#f1e6cf" stroke-width="2" fill="none" opacity=".7"/>
+  <path d="M-478 116 q4 4 1 9 M-468 118 q4 4 1 9 M-460 124 q3 3 0 7" stroke="#f1e6cf" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+
+  <!-- ═══ RIGHT SIDE ═══ -->
+
+  <!-- mounted swordfish on a plaque -->
+  <g>
+    <path d="M470 62 Q540 50 630 62 Q648 88 630 114 Q540 126 470 114 Q454 88 470 62Z" fill="url(#plaque)"/>
+    <path d="M474 66 Q540 55 626 66" stroke="#8a5d3a" stroke-width="1.2" fill="none" opacity=".7"/>
+    <ellipse cx="548" cy="122" rx="70" ry="4" fill="#000" opacity=".2"/>
+    <!-- sword (bill) -->
+    <path d="M478 86 L420 84.6 L478 89.4Z" fill="#2d3b52"/>
+    <path d="M478 86 L424 85 L478 87.2Z" fill="#7d8ea3"/>
+    <!-- dorsal fin -->
+    <path d="M512 79 Q518 54 534 50 Q530 64 540 79Z" fill="url(#fishFin)"/>
+    <!-- tail -->
+    <path d="M610 87 Q622 76 640 62 Q632 86 640 112 Q622 98 610 89Z" fill="url(#fishFin)"/>
+    <!-- body -->
+    <path d="M476 86 Q492 76 520 77 Q570 79 612 86 Q614 88 612 90 Q570 99 520 99 Q492 98 476 89Z" fill="url(#fishBody)"/>
+    <path d="M500 88 Q556 86 608 88" stroke="#c9d6e0" stroke-width=".8" fill="none" opacity=".6"/>
+    <!-- pectoral fin, gill, eye -->
+    <path d="M512 93 Q522 100 530 108 Q520 105 508 96Z" fill="#34496a"/>
+    <path d="M500 80 Q496 88 501 97" stroke="#1b2840" stroke-width="1" fill="none" opacity=".7"/>
+    <circle cx="488" cy="85" r="3" fill="#0d1420"/>
+    <circle cx="488" cy="85" r="3" fill="none" stroke="#c9d6e0" stroke-width=".8"/>
+    <circle cx="487" cy="84" r=".9" fill="#fff"/>
+    <!-- gloss -->
+    <path d="M492 80 Q540 76 600 84" stroke="#fff" stroke-width="1.4" fill="none" opacity=".35" stroke-linecap="round"/>
+    <!-- brass name plate -->
+    <rect x="530" y="104" width="40" height="8" rx="1.5" fill="#c9a04a"/>
+    <text x="550" y="110.4" text-anchor="middle" font-family="Zen Maru Gothic, Yu Gothic, sans-serif" font-weight="900" font-size="6" fill="#4a3410">メカジキ</text>
+  </g>
+
+  <!-- shelf with a beckoning cat and a sake bottle -->
+  <rect x="450" y="196" width="190" height="8" rx="2" fill="#5a3a22"/>
+  <rect x="450" y="196" width="190" height="1.4" rx=".7" fill="#7a5232"/>
+  <rect x="450" y="204" width="190" height="3" fill="#000" opacity=".25"/>
+  <path d="M462 204 H468 V226 Q468 214 480 204Z M628 204 H622 V226 Q622 214 610 204Z" fill="#4a2d1a"/>
+
+  <!-- maneki-neko: a glazed ceramic figurine, raising its right paw and holding a gold koban coin -->
+  <g transform="translate(18 28)">
+    <ellipse cx="476" cy="168" rx="24" ry="3.2" fill="#000" opacity=".25"/>
+    <!-- tail curled round the side -->
+    <path d="M457 164 Q446 162 447 152 Q448 146 454 147" stroke="url(#glazeArm)" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+    <path d="M448.6 150 Q449 146.6 454 147" stroke="#2a201a" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+    <!-- body -->
+    <path d="M455 168 Q452 150 459 140 Q467 131 476 131 Q485 131 493 140 Q500 150 497 168Z" fill="url(#glaze)"/>
+    <!-- painted calico patch on the haunch -->
+    <path d="M459 152 Q462 146 468 148 Q466 156 460 158Z" fill="#d88a3a" opacity=".85"/>
+    <!-- hind feet -->
+    <ellipse cx="462" cy="166" rx="7" ry="3.6" fill="url(#glazeHead)"/>
+    <ellipse cx="490" cy="166" rx="7" ry="3.6" fill="url(#glazeHead)"/>
+    <path d="M458.4 166 v1.8 M462 166.4 v1.8 M465.6 166 v1.8 M486.4 166 v1.8 M490 166.4 v1.8 M493.6 166 v1.8" stroke="#bdb3a3" stroke-width=".6"/>
+    <!-- gold koban held against the chest, and the paw holding it -->
+    <ellipse cx="471" cy="156" rx="8.5" ry="11" fill="url(#gold)"/>
+    <ellipse cx="471" cy="156" rx="6.6" ry="9" fill="none" stroke="#9c7418" stroke-width=".7"/>
+    <path d="M467 150 h8 M467 162 h8" stroke="#9c7418" stroke-width=".6"/>
+    <text x="471" y="158.6" text-anchor="middle" font-family="Zen Maru Gothic, Yu Gothic, sans-serif" font-weight="900" font-size="7" fill="#6a4c0c">福</text>
+    <!-- left arm hangs from the shoulder and the paw wraps over the bottom of the coin, toes in front -->
+    <path d="M461.6 140 Q457.6 148 460.4 155.6 Q462 159 465 160.4" stroke="url(#glazeArm)" stroke-width="7.4" fill="none" stroke-linecap="round"/>
+    <path d="M458.6 146 Q457.4 151 459 155" stroke="#b9ae9c" stroke-width=".6" fill="none" opacity=".7"/>
+    <ellipse cx="467" cy="160.6" rx="5.6" ry="4.4" fill="url(#glazeHead)" transform="rotate(-14 467 160.6)"/>
+    <path d="M464.2 157.4 q.6 1.6 .2 3 M467 156.8 q.6 1.8 .2 3.2 M469.8 157.2 q.6 1.6 .2 3" stroke="#b9ae9c" stroke-width=".6" fill="none" stroke-linecap="round"/>
+    <!-- head -->
+    <path d="M459 113 L461 97 Q462 95 464 97 L471 107Z" fill="url(#glazeHead)"/>
+    <path d="M493 113 L491 97 Q490 95 488 97 L481 107Z" fill="url(#glazeHead)"/>
+    <path d="M462.4 101 L463.6 109 L468.4 107.6Z M489.6 101 L488.4 109 L483.6 107.6Z" fill="#e89a9a"/>
+    <path d="M461 97 L463.6 108" stroke="#c43a2a" stroke-width=".6" opacity=".7"/>
+    <ellipse cx="476" cy="122" rx="18" ry="15.4" fill="url(#glazeHead)"/>
+    <!-- painted patches -->
+    <path d="M482 108 Q490 107.6 492.6 114 Q487 113 482 108Z" fill="#2a201a"/>
+    <path d="M466 108 Q460 109 459.4 115 Q463 112 466 108Z" fill="#d88a3a"/>
+    <!-- eyes: painted gold-green with a dark slit and a black outline -->
+    <ellipse cx="469" cy="120" rx="2.6" ry="2.9" fill="#1a1410"/>
+    <ellipse cx="483" cy="120" rx="2.6" ry="2.9" fill="#1a1410"/>
+    <circle cx="468" cy="118.8" r=".9" fill="#fff"/>
+    <circle cx="482" cy="118.8" r=".9" fill="#fff"/>
+    <!-- nose and mouth -->
+    <path d="M474.4 124.6 L477.6 124.6 L476 126.4Z" fill="#e07a7a"/>
+    <path d="M476 126.4 v1.2 M476 127.6 q-1.6 1.6 -3.2 .6 M476 127.6 q1.6 1.6 3.2 .6" stroke="#4a2a20" stroke-width=".7" fill="none" stroke-linecap="round"/>
+    <ellipse cx="465" cy="126" rx="2.8" ry="1.5" fill="#f0a3a3" opacity=".5"/>
+    <ellipse cx="487" cy="126" rx="2.8" ry="1.5" fill="#f0a3a3" opacity=".5"/>
+    <path d="M462 124.4 l-8 -1 M462 127 l-8 .8 M490 124.4 l8 -1 M490 127 l8 .8" stroke="#3a2a20" stroke-width=".6" opacity=".55" stroke-linecap="round"/>
+    <!-- glaze highlight on the head -->
+    <ellipse class="catglint" cx="469" cy="111.4" rx="5" ry="2.2" fill="#fff" opacity=".55" transform="rotate(-18 469 111.4)"/>
+    <!-- collar and bell -->
+    <path d="M461 136 Q476 142 491 136 L491 140 Q476 146 461 140Z" fill="url(#collar)"/>
+    <g class="bell">
+      <circle cx="476" cy="145" r="3.8" fill="url(#gold)"/>
+      <path d="M472.6 144.4 h6.8" stroke="#7a5a12" stroke-width=".6"/>
+      <path d="M476 145.6 v2.6" stroke="#5a3e0c" stroke-width=".9" stroke-linecap="round"/>
+    </g>
+    <!-- raised right paw: one piece from a shoulder joint inside the body up to the paw -->
+    <g class="forearm">
+      <path d="M486 150 Q492 140 494 128 Q495 121 495.6 115" stroke="url(#glazeArm)" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <circle cx="487.4" cy="148" r="5.2" fill="url(#glaze)"/>
+      <g class="pawtip">
+        <ellipse cx="496" cy="111" rx="5.4" ry="5.8" fill="url(#glazeHead)"/>
+        <path d="M493.4 106.4 v2.2 M496 105.8 v2.4 M498.6 106.4 v2.2" stroke="#b9ae9c" stroke-width=".6" stroke-linecap="round"/>
+        <ellipse cx="496" cy="112.6" rx="2.2" ry="1.7" fill="#eb9d9d"/>
+        <circle cx="493.6" cy="109.4" r=".8" fill="#eb9d9d"/>
+        <circle cx="496" cy="108.6" r=".8" fill="#eb9d9d"/>
+        <circle cx="498.4" cy="109.4" r=".8" fill="#eb9d9d"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- sake bottle and cups -->
+  <g transform="translate(0 28)">
+    <ellipse cx="565" cy="168" rx="11" ry="2" fill="#000" opacity=".22"/>
+    <path d="M556 168 V140 Q556 132 562 128 V116 H568 V128 Q574 132 574 140 V168Z" fill="url(#sake)"/>
+    <rect x="559" y="142" width="12" height="16" rx="1.5" fill="#2a3556" opacity=".85"/>
+    <ellipse cx="596" cy="168" rx="16" ry="1.8" fill="#000" opacity=".2"/>
+    <rect x="582" y="158" width="12" height="10" rx="2" fill="url(#sake)"/>
+    <rect x="598" y="158" width="12" height="10" rx="2" fill="url(#sake)"/>
+  </g>
+
+  <!-- a plain hanging lantern -->
+  <ellipse cx="672" cy="196" rx="56" ry="56" fill="url(#lampGlow)"/>
+  <g class="swing b">
+    <line x1="672" y1="16" x2="672" y2="160" stroke="#1e120a" stroke-width="1.6"/>
+    <rect x="664" y="158" width="16" height="6" rx="1.5" fill="#2a190e"/>
+    <ellipse cx="672" cy="184" rx="15.5" ry="21" fill="url(#lamp)"/>
+    <path d="M658 174 Q672 170 686 174 M657 184 Q672 180 687 184 M658 194 Q672 190 686 194" stroke="#7d2413" stroke-opacity=".45" stroke-width=".8" fill="none"/>
+    <rect x="664" y="203" width="16" height="6" rx="1.5" fill="#2a190e"/>
+  </g>
+
+  <!-- hanging scroll: 鮨 "sushi" -->
+  <rect x="716" y="34" width="70" height="5" rx="2.5" fill="#4a2d1a"/>
+  <path d="M751 28 L736 34 M751 28 L766 34" stroke="#1e120a" stroke-width="1"/>
+  <rect x="722" y="38" width="58" height="160" fill="#7a3a2a"/>
+  <rect x="728" y="44" width="46" height="146" fill="#f3ead6"/>
+  <text x="751" y="130" text-anchor="middle" font-family="Zen Maru Gothic, Yu Gothic, sans-serif" font-weight="900" font-size="34" fill="#2a1a0e">鮨</text>
+  <rect x="747" y="154" width="8" height="8" fill="#c9442e" opacity=".85"/>
+  <rect x="718" y="196" width="66" height="6" rx="3" fill="#4a2d1a"/>
+</svg>

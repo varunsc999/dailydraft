@@ -1,0 +1,31 @@
+/* The other diners along the bar (wide screens). */
+
+/* ─── OTHER DINERS (wide screens): their mats, sushi and plate stacks ─── */
+.nmat {
+  position: absolute;
+  top: 394px;
+  width: 170px; height: 104px;
+  border-radius: 3px;
+  background:
+    linear-gradient(180deg, transparent 37px, rgba(118,100,58,.7) 37px 38px, transparent 38px 70px, rgba(118,100,58,.7) 70px 71px, transparent 71px),
+    repeating-linear-gradient(90deg, #cdbb7c 0, #e6d79f 3.5px, #c2ae6e 7px, #9c8a4f 7.3px 8px);
+  box-shadow: 0 3px 6px rgba(90, 58, 20, .35);
+}
+.piece {
+  position: absolute;
+  top: 34px;
+  width: 36px; height: 24px;
+  animation: pieceIn .4s cubic-bezier(.3,1.6,.5,1);
+}
+.piece svg { width: 100%; height: 100%; display: block; overflow: visible; }
+/* each diner's own drink (right of their mat) and condiment (left of it) */
+.ndrink { position: absolute; top: 372px; width: 52px; height: 80px; }
+.ncond { position: absolute; top: 440px; width: 52px; height: 34px; }
+.ndrink svg, .ncond svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.nsteam { opacity: 0; animation: nsteam 2.8s ease-in-out infinite; }
+.nsteam.b { animation-delay: -1.4s; }
+@keyframes nsteam { 0% { opacity: 0; transform: translateY(4px); } 40% { opacity: .5; } 100% { opacity: 0; transform: translateY(-8px); } }
+.piece.eaten { animation: pieceOut .5s ease-in forwards; }
+@keyframes pieceIn { from { transform: translateY(-30px) scale(.4); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes pieceOut { 40% { transform: translateY(-6px) scale(1.05); } to { transform: translateY(-18px) scale(.3); opacity: 0; } }
+.nplate { width: 44px; height: 13px; }

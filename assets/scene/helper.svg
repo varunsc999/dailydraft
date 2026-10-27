@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 84">
+  <!-- A kitchen helper in an indigo samue jacket carrying a tray of bowls, drawn full height.
+       The page places them so their legs pass behind the wooden pass shelf, and walks them back and forth. -->
+  <style>
+    /* one step every .55s: legs scissor from the hips, the body rises on each passing leg,
+       the free arm swings opposite, and the tray arm lags a little behind */
+    .bob { transform-box: view-box; transform-origin: 22px 56px; animation: bob .55s ease-in-out infinite alternate; }
+    @keyframes bob { from { transform: translateY(0) rotate(.6deg); } to { transform: translateY(-1.2px) rotate(-.6deg); } }
+    .legL { transform-box: view-box; transform-origin: 18px 55px; animation: leg 1.1s ease-in-out infinite; }
+    .legR { transform-box: view-box; transform-origin: 26px 55px; animation: leg 1.1s ease-in-out infinite; animation-delay: -.55s; }
+    @keyframes leg { 0%, 100% { transform: rotate(14deg); } 50% { transform: rotate(-14deg); } }
+    .swingarm { transform-box: view-box; transform-origin: 14px 30px; animation: swingarm 1.1s ease-in-out infinite; animation-delay: -.55s; }
+    @keyframes swingarm { 0%, 100% { transform: rotate(12deg); } 50% { transform: rotate(-12deg); } }
+    .tray { transform-box: view-box; transform-origin: 30px 30px; animation: tray 1.1s ease-in-out infinite; animation-delay: -.12s; }
+    @keyframes tray { 0%, 50%, 100% { transform: rotate(0); } 25% { transform: rotate(-2deg); } 75% { transform: rotate(1.5deg); } }
+  </style>
+  <defs>
+    <linearGradient id="h-jacket" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1c2747"/>
+      <stop offset=".45" stop-color="#33467c"/>
+      <stop offset="1" stop-color="#18213d"/>
+    </linearGradient>
+    <linearGradient id="h-pants" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22222a"/>
+      <stop offset=".5" stop-color="#3a3a44"/>
+      <stop offset="1" stop-color="#202027"/>
+    </linearGradient>
+    <radialGradient id="h-skin" cx=".44" cy=".36" r=".72">
+      <stop offset="0" stop-color="#ecc29c"/>
+      <stop offset="1" stop-color="#c48a64"/>
+    </radialGradient>
+    <radialGradient id="h-bowl" cx=".35" cy=".3" r=".9">
+      <stop offset="0" stop-color="#fbf8f2"/>
+      <stop offset="1" stop-color="#d9d1c3"/>
+    </radialGradient>
+    <radialGradient id="h-bowl2" cx=".35" cy=".3" r=".9">
+      <stop offset="0" stop-color="#c76a55"/>
+      <stop offset="1" stop-color="#8a3324"/>
+    </radialGradient>
+  </defs>
+
+  <!-- legs (behind the body) -->
+  <g class="legR">
+    <path d="M23.4 54 L24.6 80 H29.4 L29.6 54Z" fill="url(#h-pants)"/>
+    <path d="M24 79 H31.6 Q32.4 82.4 30.6 83 H24Z" fill="#141418"/>
+  </g>
+  <g class="legL">
+    <path d="M14.4 54 L14.6 80 H19.4 L20.6 54Z" fill="url(#h-pants)"/>
+    <path d="M14 79 H21.6 Q22.4 82.4 20.6 83 H14Z" fill="#141418"/>
+  </g>
+
+  <g class="bob">
+    <!-- far arm swinging at the side -->
+    <g class="swingarm">
+      <path d="M14 30 Q11.4 40 12.4 50" stroke="#24335e" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="12.6" cy="52" rx="2" ry="2.4" fill="#c48a64"/>
+    </g>
+    <!-- torso: slim, belted at the waist -->
+    <path d="M19 26 C16 26.8 13.6 28 13 31.4 C12.4 37 12.8 47 13.4 55.4 H30.6 C31.2 47 31.6 37 31 31.4 C30.4 28 28 26.8 25 26Z" fill="url(#h-jacket)"/>
+    <path d="M19.2 26.4 L24.4 39 M24.8 26.4 L22.4 31.4" stroke="#0f1630" stroke-width=".7"/>
+    <path d="M16.6 37 Q17.6 46 16.8 54 M27.4 37 Q26.6 46 27.2 54" stroke="#0f1630" stroke-opacity=".35" stroke-width=".9" fill="none"/>
+    <rect x="13.2" y="49" width="17.6" height="2.4" fill="#0f1630" opacity=".7"/>
+    <!-- neck and head -->
+    <path d="M20 20.4 V26.8 Q22 28 24 26.8 V20.4Z" fill="#b57b57"/>
+    <ellipse cx="17" cy="15.4" rx="1.3" ry="1.8" fill="#c48a64"/>
+    <ellipse cx="27" cy="15.4" rx="1.3" ry="1.8" fill="#c48a64"/>
+    <path d="M17 13.2 C17 8.8 19.2 6.6 22 6.6 C24.8 6.6 27 8.8 27 13.2 C27 16.6 26.4 18.8 25.2 20.4 C24.2 21.6 23.2 22.2 22 22.2 C20.8 22.2 19.8 21.6 18.8 20.4 C17.6 18.8 17 16.6 17 13.2Z" fill="url(#h-skin)"/>
+    <path d="M17 13 C16.8 8.6 19.2 6.4 22 6.4 C24.8 6.4 27.2 8.6 27 13 L26.4 11.6 C25.6 10 24 9.6 22 9.6 C20 9.6 18.4 10 17.6 11.6Z" fill="#1a1411"/>
+    <!-- red headband -->
+    <path d="M16.9 10.6 Q22 8.6 27.1 10.6 L27.2 12.6 Q22 10.8 16.8 12.6Z" fill="#c9442e"/>
+    <path d="M27 10.8 Q29.6 10 30.4 11.6 Q29.4 12.8 27.2 12.4Z" fill="#a8341f"/>
+    <!-- face, looking where they walk -->
+    <ellipse cx="20.6" cy="15.2" rx=".75" ry=".95" fill="#221915"/>
+    <ellipse cx="24.8" cy="15.2" rx=".75" ry=".95" fill="#221915"/>
+    <path d="M19.4 13.4 Q20.6 12.8 21.6 13.2 M23.6 13.2 Q24.8 12.8 26 13.4" stroke="#1a1411" stroke-width=".55" fill="none" stroke-linecap="round"/>
+    <path d="M23 16.4 Q23.6 17.8 22.6 18.2" stroke="#9a6142" stroke-width=".45" fill="none"/>
+    <path d="M21 19.6 Q22.6 20.4 24.2 19.6" stroke="#7d3f2e" stroke-width=".55" fill="none" stroke-linecap="round"/>
+    <!-- near arm raised, holding the tray -->
+    <g class="tray">
+      <path d="M30 30 Q35.6 33.6 35.8 26 L35.4 20.6" stroke="#2c3d6c" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <ellipse cx="35.4" cy="18.8" rx="2.1" ry="1.8" fill="#c48a64"/>
+      <rect x="24" y="15.4" width="19" height="2.2" rx=".8" fill="#6e4526"/>
+      <rect x="24" y="17" width="19" height=".8" fill="#3e2614"/>
+      <path d="M25.6 15.4 Q25.6 11.2 29 11.2 Q32.4 11.2 32.4 15.4Z" fill="url(#h-bowl)"/>
+      <ellipse cx="29" cy="11.4" rx="3.4" ry=".7" fill="#e9e1d4"/>
+      <path d="M34 15.4 Q34 11.8 37.4 11.8 Q40.8 11.8 40.8 15.4Z" fill="url(#h-bowl2)"/>
+      <ellipse cx="37.4" cy="12" rx="3.4" ry=".7" fill="#6a2418"/>
+    </g>
+  </g>
+</svg>

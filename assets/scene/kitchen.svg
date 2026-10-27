@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-86 0 460 170">
+  <!-- x 0–288 is the original kitchen; the window is wider now, so a fridge and knife rack sit to the left and a sink to the right. -->
+  <style>
+    .steam { animation: steam 2.6s ease-in-out infinite; opacity: 0; }
+    .s2 { animation-delay: .85s; }
+    .s3 { animation-delay: 1.7s; }
+    @keyframes steam {
+      0% { transform: translateY(6px); opacity: 0; }
+      40% { opacity: .55; }
+      100% { transform: translateY(-16px); opacity: 0; }
+    }
+    .flame { transform-box: fill-box; transform-origin: 50% 100%; animation: flame .18s ease-in-out infinite alternate; }
+    .flame:nth-of-type(2n) { animation-duration: .23s; }
+    @keyframes flame { from { transform: scaleY(.75); } to { transform: scaleY(1.15); } }
+    .ladle { transform-box: view-box; animation: ladle 3.4s ease-in-out infinite; }
+    .l1 { transform-origin: 218px 58px; }
+    .l2 { transform-origin: 236px 58px; animation-delay: -.8s; }
+    .l3 { transform-origin: 270px 58px; animation-delay: -1.7s; }
+    @keyframes ladle { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+    .glowpulse { animation: glow 2.2s ease-in-out infinite; }
+    @keyframes glow { 0%, 100% { opacity: .55; } 50% { opacity: .8; } }
+  </style>
+  <defs>
+    <pattern id="tiles" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="#cfc4b2"/>
+      <rect x=".7" y=".7" width="22.6" height="10.6" rx="1.4" fill="#ede6da"/>
+      <rect x=".7" y=".7" width="22.6" height="3" rx="1.4" fill="#f5f0e7"/>
+      <rect x="-11.3" y="12.7" width="22.6" height="10.6" rx="1.4" fill="#e9e1d4"/>
+      <rect x="12.7" y="12.7" width="22.6" height="10.6" rx="1.4" fill="#e9e1d4"/>
+      <rect x="12.7" y="12.7" width="22.6" height="3" rx="1.4" fill="#f2ece2"/>
+    </pattern>
+    <linearGradient id="steelV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dfe3e8"/>
+      <stop offset=".12" stop-color="#b8bec7"/>
+      <stop offset="1" stop-color="#8b929c"/>
+    </linearGradient>
+    <linearGradient id="steelH" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9aa1ab"/>
+      <stop offset=".35" stop-color="#e2e6ea"/>
+      <stop offset=".6" stop-color="#b3bac3"/>
+      <stop offset="1" stop-color="#8a919b"/>
+    </linearGradient>
+    <linearGradient id="pot" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3b3f45"/>
+      <stop offset=".3" stop-color="#6b7179"/>
+      <stop offset=".55" stop-color="#454a51"/>
+      <stop offset="1" stop-color="#2b2e33"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9c6b43"/>
+      <stop offset="1" stop-color="#6f4628"/>
+    </linearGradient>
+    <linearGradient id="hangiri" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b98a58"/>
+      <stop offset=".4" stop-color="#ddb684"/>
+      <stop offset="1" stop-color="#a87a4a"/>
+    </linearGradient>
+    <radialGradient id="bowlBlue" cx=".35" cy=".3" r=".9">
+      <stop offset="0" stop-color="#6d8fbf"/>
+      <stop offset="1" stop-color="#2d4a78"/>
+    </radialGradient>
+    <radialGradient id="bowlRed" cx=".35" cy=".3" r=".9">
+      <stop offset="0" stop-color="#c76a55"/>
+      <stop offset="1" stop-color="#8a3324"/>
+    </radialGradient>
+    <radialGradient id="bowlCream" cx=".35" cy=".3" r=".9">
+      <stop offset="0" stop-color="#fbf8f2"/>
+      <stop offset="1" stop-color="#d9d1c3"/>
+    </radialGradient>
+    <linearGradient id="bottleGreen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1f3b29"/>
+      <stop offset=".4" stop-color="#3f6b4e"/>
+      <stop offset="1" stop-color="#1a3123"/>
+    </linearGradient>
+    <linearGradient id="bottleWhite" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d8d1c4"/>
+      <stop offset=".4" stop-color="#fbf8f2"/>
+      <stop offset="1" stop-color="#cfc7b8"/>
+    </linearGradient>
+    <radialGradient id="light" cx=".5" cy="-.1" r="1.1">
+      <stop offset="0" stop-color="#fff2d2" stop-opacity=".55"/>
+      <stop offset=".6" stop-color="#ffe2b0" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#7a5a3a" stop-opacity=".25"/>
+    </radialGradient>
+  </defs>
+
+  <!-- tiled back wall -->
+  <rect x="-86" width="460" height="170" fill="url(#tiles)"/>
+
+  <!-- range hood and extraction duct -->
+  <rect x="226" y="0" width="30" height="16" fill="url(#steelH)"/>
+  <path d="M196 16 H286 L278 46 H204 Z" fill="url(#steelH)"/>
+  <rect x="202" y="44" width="78" height="4" fill="#7d848e"/>
+
+  <!-- utensil rail with ladles -->
+  <rect x="206" y="56" width="72" height="2.5" rx="1.2" fill="#8a919b"/>
+  <g class="ladle l1"><path d="M218 58 V82" stroke="#9aa1ab" stroke-width="1.8"/><ellipse cx="218" cy="85" rx="5.5" ry="3.6" fill="url(#steelH)"/></g>
+  <g class="ladle l2"><path d="M236 58 V78" stroke="#9aa1ab" stroke-width="1.8"/><ellipse cx="236" cy="81" rx="4.5" ry="3" fill="url(#steelH)"/></g>
+  <path d="M254 58 V88" stroke="#7a5536" stroke-width="2.6" stroke-linecap="round"/>
+  <g class="ladle l3"><path d="M270 58 V80" stroke="#9aa1ab" stroke-width="1.8"/><path d="M266 80 h8 l-1 9 h-6z" fill="url(#steelH)"/></g>
+
+  <!-- open shelves -->
+  <rect x="10" y="58" width="92" height="4" fill="url(#wood)"/>
+  <rect x="10" y="62" width="92" height="2" fill="#000" opacity=".12"/>
+  <rect x="10" y="94" width="92" height="4" fill="url(#wood)"/>
+  <rect x="10" y="98" width="92" height="2" fill="#000" opacity=".12"/>
+
+  <!-- top shelf: bottles -->
+  <path d="M18 58 V40 Q18 36 21 34 V27 H25 V34 Q28 36 28 40 V58Z" fill="url(#bottleGreen)"/>
+  <rect x="20.5" y="25" width="5" height="3" rx="1" fill="#c9a04a"/>
+  <path d="M34 58 V44 Q34 39 38 37 V31 H41 V37 Q45 39 45 44 V58Z" fill="url(#bottleWhite)"/>
+  <rect x="35.5" y="46" width="8" height="8" rx="1" fill="#2a3556" opacity=".85"/>
+  <path d="M52 58 V45 Q52 41 55 39 V33 H58 V39 Q61 41 61 45 V58Z" fill="url(#bottleGreen)" opacity=".9"/>
+  <rect x="68" y="44" width="28" height="14" rx="2" fill="#b07d4f"/>
+  <rect x="68" y="44" width="28" height="3" rx="1" fill="#c99363"/>
+
+  <!-- lower shelf: stacked bowls -->
+  <path d="M14 94 Q14 84 27 84 Q40 84 40 94Z" fill="url(#bowlBlue)"/>
+  <path d="M16 85 Q16 77 27 77 Q38 77 38 85Z" fill="url(#bowlBlue)"/>
+  <ellipse cx="27" cy="77.5" rx="11" ry="1.6" fill="#a8bedb" opacity=".6"/>
+  <path d="M44 94 Q44 85 56 85 Q68 85 68 94Z" fill="url(#bowlRed)"/>
+  <path d="M46 86 Q46 79 56 79 Q66 79 66 86Z" fill="url(#bowlRed)"/>
+  <path d="M72 94 Q72 86 85 86 Q98 86 98 94Z" fill="url(#bowlCream)"/>
+  <path d="M74 87 Q74 80 85 80 Q96 80 96 87Z" fill="url(#bowlCream)"/>
+  <path d="M76 81 Q76 75 85 75 Q94 75 94 81Z" fill="url(#bowlCream)"/>
+
+  <!-- back counter -->
+  <rect x="-86" y="126" width="460" height="44" fill="url(#steelV)"/>
+  <rect x="-86" y="126" width="460" height="2" fill="#f1f3f5"/>
+
+  <!-- wooden rice tub (hangiri), sitting on the back counter -->
+  <ellipse cx="46" cy="127.6" rx="21" ry="2.6" fill="#000" opacity=".22"/>
+  <path d="M27 119 Q27.6 127 46 127.4 Q64.4 127 65 119Z" fill="url(#hangiri)"/>
+  <path d="M27.6 122 Q46 125.4 64.4 122" stroke="#b8803c" stroke-width="1.4" fill="none"/>
+  <ellipse cx="46" cy="119" rx="19" ry="3.6" fill="#efe9dc"/>
+  <ellipse cx="46" cy="119" rx="19" ry="3.6" fill="none" stroke="#c99a62" stroke-width="1.2"/>
+  <path d="M54 117 L63 110" stroke="#d6b48a" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- stove and stock pot -->
+  <rect x="200" y="118" width="80" height="8" rx="2" fill="#2c3036"/>
+  <!-- gas flames under the pot -->
+  <ellipse class="glowpulse" cx="239" cy="119" rx="30" ry="5" fill="#ff9a4a" opacity=".6"/>
+  <path class="flame" d="M216 120 q2 -6 4 0z" fill="#5aa0ff"/>
+  <path class="flame" d="M224 120 q2 -7 4 0z" fill="#7ab4ff"/>
+  <path class="flame" d="M232 120 q2 -6 4 0z" fill="#5aa0ff"/>
+  <path class="flame" d="M240 120 q2 -7 4 0z" fill="#7ab4ff"/>
+  <path class="flame" d="M248 120 q2 -6 4 0z" fill="#5aa0ff"/>
+  <path class="flame" d="M256 120 q2 -7 4 0z" fill="#7ab4ff"/>
+  <path class="steam" d="M222 96 q-5 -7 0 -14 q5 -7 0 -14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <path class="steam s2" d="M238 96 q-5 -7 0 -14 q5 -7 0 -14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <path class="steam s3" d="M254 96 q-5 -7 0 -14 q5 -7 0 -14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <rect x="212" y="92" width="54" height="21" rx="3" fill="url(#pot)"/>
+  <rect x="209" y="90" width="60" height="5" rx="2.5" fill="#575d65"/>
+  <rect x="204" y="98" width="8" height="3.5" rx="1.5" fill="#2b2e33"/>
+  <rect x="266" y="98" width="8" height="3.5" rx="1.5" fill="#2b2e33"/>
+
+
+  <!-- left: an upright fridge and a magnetic knife rack -->
+  <rect x="-82" y="26" width="54" height="100" rx="3" fill="url(#steelH)"/>
+  <rect x="-82" y="26" width="54" height="100" rx="3" fill="none" stroke="#7d848e" stroke-width="1"/>
+  <path d="M-82 74 H-28" stroke="#7d848e" stroke-width="1.2"/>
+  <rect x="-36" y="36" width="3" height="28" rx="1.5" fill="#5b616a"/>
+  <rect x="-36" y="82" width="3" height="28" rx="1.5" fill="#5b616a"/>
+  <rect x="-76" y="32" width="18" height="10" rx="1" fill="#2f3a4a" opacity=".85"/>
+  <rect x="-74.6" y="34" width="6" height="2" fill="#7fd0a0"/>
+  <rect x="-20" y="46" width="30" height="5" rx="1.5" fill="#3a3f46"/>
+  <path d="M-15 51 V74 L-12 78 V51Z" fill="url(#steelH)"/>
+  <rect x="-16.5" y="44" width="4" height="9" rx="1" fill="#4a3020"/>
+  <path d="M-5 51 V82 Q-2 86 -1 80 V51Z" fill="url(#steelH)"/>
+  <rect x="-6" y="44" width="5" height="9" rx="1" fill="#4a3020"/>
+  <path d="M4 51 V68 H8 V51Z" fill="url(#steelH)"/>
+  <rect x="3.5" y="44" width="5" height="9" rx="1" fill="#2a1a12"/>
+
+  <!-- right: a small back window below the curtain line (the page lays rain over the glass on rainy days) -->
+  <rect x="295" y="41" width="74" height="56" rx="2" fill="#6b4a2e"/>
+  <rect x="300" y="46" width="64" height="46" fill="#d9e8ef"/>
+  <rect x="300" y="46" width="64" height="20" fill="#eaf2f4"/>
+  <path d="M332 46 V92 M300 69 H364" stroke="#6b4a2e" stroke-width="2.6"/>
+  <rect x="293" y="96" width="78" height="4" rx="1" fill="#7d5636"/>
+  <rect x="293" y="100" width="78" height="2" fill="#000" opacity=".15"/>
+
+  <!-- a dish rack standing on the back counter, and the sink -->
+  <path d="M338 126 V104 M366 126 V104 M336 112 H368" stroke="#8a919b" stroke-width="1.6"/>
+  <ellipse cx="344" cy="114" rx="2.6" ry="11" fill="url(#bowlCream)"/>
+  <ellipse cx="350" cy="114" rx="2.6" ry="11" fill="url(#bowlCream)"/>
+  <ellipse cx="356" cy="115" rx="2.4" ry="9.6" fill="url(#bowlBlue)"/>
+  <ellipse cx="362" cy="115" rx="2.4" ry="9.6" fill="url(#bowlBlue)"/>
+  <path d="M310 126 V112 Q310 106 316 106 H322 V109" stroke="url(#steelH)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <rect x="306" y="122" width="8" height="5" rx="1.5" fill="#7d848e"/>
+  <rect x="300" y="126" width="34" height="5" fill="#5b616a"/>
+
+  <!-- warm overhead light falloff -->
+  <rect x="-86" width="460" height="170" fill="url(#light)"/>
+</svg>

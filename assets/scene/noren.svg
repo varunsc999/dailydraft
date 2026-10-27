@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-72 0 444 54">
+  <style>
+    .f { transform-box: fill-box; transform-origin: top center; animation: sway 5s ease-in-out infinite; }
+    .f2 { animation-delay: .5s; }
+    .f3 { animation-delay: 1s; }
+    .f4 { animation-delay: 1.5s; }
+    @keyframes sway { 0%, 100% { transform: skewX(0); } 50% { transform: skewX(-2.5deg); } }
+  </style>
+  <defs>
+    <linearGradient id="indigo" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1c2747"/>
+      <stop offset=".25" stop-color="#2a3a66"/>
+      <stop offset=".5" stop-color="#22305a"/>
+      <stop offset=".75" stop-color="#2b3b68"/>
+      <stop offset="1" stop-color="#1b2645"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9a3424"/>
+      <stop offset=".25" stop-color="#c04a35"/>
+      <stop offset=".5" stop-color="#b3412d"/>
+      <stop offset=".75" stop-color="#c24c37"/>
+      <stop offset="1" stop-color="#98321f"/>
+    </linearGradient>
+    <linearGradient id="hem" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".28"/>
+    </linearGradient>
+    <linearGradient id="rod" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a87a4e"/>
+      <stop offset="1" stop-color="#6a4426"/>
+    </linearGradient>
+  </defs>
+
+  <g font-family="Zen Maru Gothic, Yu Gothic, sans-serif" font-weight="700" font-size="18" fill="#f1ebdf" text-anchor="middle">
+    <g class="f f3"><rect x="-66" y="5" width="70" height="46" fill="url(#indigo)"/><rect x="-66" y="38" width="70" height="13" fill="url(#hem)"/></g>
+    <g class="f"><rect x="6" y="5" width="70" height="46" fill="url(#indigo)"/><rect x="6" y="38" width="70" height="13" fill="url(#hem)"/><text x="41" y="34" opacity=".92">一</text></g>
+    <g class="f f2"><rect x="78" y="5" width="70" height="46" fill="url(#indigo)"/><rect x="78" y="38" width="70" height="13" fill="url(#hem)"/><text x="113" y="34" opacity=".92">期</text></g>
+    <g class="f f3"><rect x="150" y="5" width="70" height="46" fill="url(#red)"/><rect x="150" y="38" width="70" height="13" fill="url(#hem)"/><text x="185" y="34" opacity=".92">一</text></g>
+    <g class="f f4"><rect x="222" y="5" width="70" height="46" fill="url(#indigo)"/><rect x="222" y="38" width="70" height="13" fill="url(#hem)"/><text x="257" y="34" opacity=".92">会</text></g>
+  </g>
+  <g class="f f2"><rect x="294" y="5" width="70" height="46" fill="url(#indigo)"/><rect x="294" y="38" width="70" height="13" fill="url(#hem)"/></g>
+  <rect x="-72" y="1" width="444" height="6" rx="3" fill="url(#rod)"/>
+</svg>

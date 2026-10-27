@@ -1,0 +1,292 @@
+/* The belt and its plates, the roll and sheet on the mat, the plate stack and the controls. */
+
+/* ─── BELT ─── */
+#belt {
+  position: absolute;
+  left: -540px; top: 308px;
+  width: 1440px; height: 56px;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.45), transparent 22%, transparent 75%, rgba(0,0,0,.4)),
+    repeating-linear-gradient(90deg, #5d636c 0, #6c727b 3px, #50555d 30px, #464b52 44px, #24272c 45px 48px);
+  background-position: 0 0;
+  transition: background-position .85s cubic-bezier(.45,.05,.3,1);
+}
+#plates { position: absolute; inset: 0; pointer-events: none; }
+.bplate {
+  position: absolute;
+  top: 298px;
+  width: 80px; height: 60px;
+  transition: left .85s cubic-bezier(.45,.05,.3,1);
+  pointer-events: auto;
+}
+.bplate svg { width: 100%; height: 100%; overflow: visible; }
+.bplate.current { cursor: pointer; }
+.bplate.current .pc { animation: wobble 1.3s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+@keyframes wobble { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-4deg); } 75% { transform: rotate(4deg); } }
+
+#tap {
+  position: absolute;
+  left: 180px; top: 271px;
+  transform: translateX(-50%);
+  background: var(--vermilion);
+  color: #fff;
+  font-weight: 900;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s;
+  z-index: 5;
+}
+#tap::after {
+  content: '';
+  position: absolute;
+  left: 50%; bottom: -5px;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--vermilion);
+  border-bottom: 0;
+}
+#tap.show { opacity: 1; animation: bounce 1s ease-in-out infinite; }
+@keyframes bounce { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -4px); } }
+
+/* ─── SHEET + ROLL ON THE MAT ─── */
+#sheet {
+  position: absolute;
+  left: 66px; top: 402px;
+  width: 228px; height: 128px;
+  border-radius: 5px;
+  border: 9px solid var(--edge, var(--nori));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 6px 12px -4px rgba(60, 35, 10, .55);
+  background-color: #fbf6ea;
+  background-image:
+    radial-gradient(ellipse 3px 1.4px at 30% 35%, #e9dfca 70%, transparent 76%),
+    radial-gradient(ellipse 3px 1.4px at 75% 70%, #ebe2cf 70%, transparent 76%),
+    radial-gradient(ellipse 1.4px 3px at 55% 15%, #ece3d1 70%, transparent 76%),
+    radial-gradient(ellipse 1.4px 3px at 15% 80%, #fff 70%, transparent 76%);
+  background-size: 13px 11px, 17px 13px, 11px 15px, 9px 12px;
+  clip-path: inset(0 242px 0 0);
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 7px 10px;
+}
+#sheet.on { visibility: visible; }
+.cat { display: flex; align-items: center; gap: 5px; font-family: var(--mono); font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: #8a7a62; }
+.cat i { width: 10px; height: 10px; border-radius: 50%; border: 2.5px solid var(--plate); background: #fff; }
+.name { text-align: center; font-weight: 900; color: #3a2414; line-height: 1.05; letter-spacing: -.01em; }
+.name .w { display: inline-block; white-space: nowrap; }
+.name .ch { display: inline-block; transform: rotate(var(--r)); }
+.name.pop .ch { animation: letterPop .42s var(--d) cubic-bezier(.3,1.7,.5,1); }
+@keyframes letterPop {
+  0% { transform: rotate(var(--r)); }
+  40% { transform: rotate(calc(var(--r) * -2)) scale(1.28) translateY(-3px); }
+  100% { transform: rotate(var(--r)); }
+}
+.sheet-foot { display: flex; justify-content: space-between; align-items: flex-end; }
+.sticker {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #fff, #ede7dc);
+  border: 4px solid var(--plate);
+  display: grid; place-items: center;
+  font-weight: 900;
+  font-size: 14px;
+  transform: rotate(-10deg) scale(0);
+  box-shadow: 0 3px 6px rgba(0,0,0,.2);
+}
+#sheet.revealed .sticker { animation: stamp .38s .08s cubic-bezier(.3,1.7,.5,1) forwards; }
+@keyframes stamp { to { transform: rotate(-10deg) scale(1); } }
+.afford { font-size: 9px; font-weight: 900; color: var(--vermilion); text-align: center; flex: 1; align-self: center; opacity: 0; }
+#sheet.revealed .afford.on { opacity: 1; }
+.timer { width: 38px; height: 38px; position: relative; opacity: 0; transition: opacity .2s; }
+#sheet.revealed .timer { opacity: 1; }
+.timer svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.timer .bar { transition: stroke-dashoffset 1s linear, stroke .2s; }
+.timer .sec { position: absolute; inset: 0; display: grid; place-items: center; font-weight: 900; font-size: 12.5px; }
+.timer.low .bar { stroke: var(--vermilion); }
+.timer.low .sec { color: var(--vermilion); animation: throb .5s ease-in-out infinite; }
+@keyframes throb { 50% { transform: scale(1.18); } }
+
+#roll {
+  position: absolute;
+  left: 64px; top: 404px;
+  width: 40px; height: 124px;
+  border-radius: 20px / 11px;
+  background: var(--skin,
+    repeating-linear-gradient(0deg, transparent 0 3px, rgba(255,255,255,.025) 3px 4px),
+    linear-gradient(90deg, #08100b 0%, #1d2c23 20%, #3c5546 34%, #22342a 52%, #111b15 80%, #070d09 100%));
+  box-shadow: 5px 7px 10px rgba(50, 25, 5, .45);
+  visibility: hidden;
+}
+#roll.show { visibility: visible; }
+#roll::before {
+  content: '';
+  position: absolute;
+  inset: 8px 0 0;
+  border-radius: inherit;
+  background: repeating-linear-gradient(90deg, transparent 0 7px, rgba(255,255,255,.05) 7px 9px);
+}
+#roll.spinning::before { animation: spin .22s linear infinite; }
+@keyframes spin { to { background-position: 9px 0; } }
+#roll::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: -6px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--cap,
+    radial-gradient(ellipse 22% 30% at 44% 50%, var(--f1, #e8784c) 70%, transparent 74%),
+    radial-gradient(ellipse 10% 18% at 62% 52%, var(--f2, #7fae4c) 70%, transparent 74%),
+    radial-gradient(ellipse at 50% 50%, #f7f2e7 0 60%, #c9c2b4 63%, #17221b 66%));
+}
+
+/* the mat glows in the plate's colour while the roll opens; gold gets slow-turning rays */
+#matGlow {
+  position: absolute;
+  left: -20px; top: 350px;
+  width: 400px; height: 232px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--plate) 35%, transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+#sheet.revealed { box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 0 0 2px var(--plate), 0 0 22px 4px var(--plate); }
+/* !important beats any running animation, so the glow is gone the moment you decide */
+#matGlow.off { opacity: 0 !important; }
+/* while the roll hops onto the mat it is pinned to the left end, whatever happened to it before */
+#roll.landing { left: 64px !important; width: 40px !important; }
+#matGlow.gold::before {
+  content: '';
+  position: absolute; inset: -30px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, rgba(255, 232, 150, .9) 0 6deg, transparent 6deg 20deg);
+  -webkit-mask: radial-gradient(closest-side, #000 45%, transparent);
+          mask: radial-gradient(closest-side, #000 45%, transparent);
+  animation: rays 6s linear infinite;
+}
+@keyframes rays { to { transform: rotate(360deg); } }
+
+/* a plate's hidden value pops up once you've decided on it */
+.worth {
+  position: absolute;
+  top: 240px;
+  transform: translateX(-50%);
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(18, 11, 6, .82);
+  color: #fff;
+  font-weight: 900; font-size: 11px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 9;
+  animation: worth 1.6s ease-out forwards;
+}
+.worth b { color: #ffd27a; }
+.worth.took b { color: #9be0a8; }
+@keyframes worth {
+  0% { opacity: 0; transform: translate(-50%, 8px) scale(.8); }
+  15% { opacity: 1; transform: translate(-50%, 0) scale(1.05); }
+  25% { transform: translate(-50%, 0) scale(1); }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -12px); }
+}
+.ticket .val {
+  position: absolute;
+  right: -5px; top: -3px;
+  min-width: 17px; height: 17px;
+  padding: 0 3px;
+  border-radius: 999px;
+  background: #2f7a4b;
+  color: #fff;
+  font-family: var(--mono); font-size: 7.5px;
+  display: grid; place-items: center;
+  box-shadow: 0 2px 3px rgba(0,0,0,.35);
+  z-index: 3;
+}
+
+/* last three seconds: the sheet trembles and the timer ring pulses red */
+#sheet.hurry { animation: hurry .5s ease-in-out infinite; }
+@keyframes hurry { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-.8px) rotate(-.15deg); } 75% { transform: translateX(.8px) rotate(.15deg); } }
+.timer.low svg { animation: ring .5s ease-in-out infinite; }
+@keyframes ring { 50% { transform: rotate(-90deg) scale(1.12); filter: drop-shadow(0 0 4px rgba(201, 68, 46, .8)); } }
+
+#sparkle { position: absolute; width: 0; height: 0; pointer-events: none; z-index: 6; }
+#sparkle span { position: absolute; width: 6px; height: 6px; margin: -3px; border-radius: 50%; background: var(--c); opacity: 0; }
+#sparkle.go span { animation: burst .5s ease-out forwards; }
+@keyframes burst {
+  0% { opacity: 1; transform: rotate(var(--a)) translateX(0) scale(1.2); }
+  100% { opacity: 0; transform: rotate(var(--a)) translateX(26px) scale(.3); }
+}
+
+/* ─── PLATE STACK ─── */
+.splate {
+  position: absolute;
+  left: 314px;
+  width: 44px; height: 13px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 45% 35%, #ffffff 40%, #e4ddd0);
+  border: 3.5px solid var(--plate);
+  box-shadow: 0 2.5px 0 rgba(60, 35, 10, .28);
+  animation: land .35s cubic-bezier(.3,1.6,.5,1);
+}
+@keyframes land { from { transform: translateY(-4px) scale(1.05); } to { transform: none; } }
+#stackLabel {
+  position: absolute;
+  left: 304px; top: 543px;
+  width: 64px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 7.5px;
+  color: #8a6a42;
+  white-space: nowrap;
+}
+
+/* ─── CONTROLS ─── */
+#controls { position: absolute; left: 56px; right: 56px; top: 572px; height: 36px; z-index: 8; }
+.btn {
+  position: absolute;
+  top: 0;
+  width: calc(50% - 5px);
+  height: 36px;
+  border-radius: 11px;
+  font: inherit;
+  font-weight: 900;
+  font-size: 14.5px;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,.12);
+  background: linear-gradient(#fffdf8, #efe8dc);
+  color: var(--ink);
+  box-shadow: 0 3px 0 #c9bba3, 0 6px 12px -6px rgba(0,0,0,.4);
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity .2s, transform .25s cubic-bezier(.3,1.4,.5,1);
+}
+.btn:active { transform: translateY(2px) !important; box-shadow: 0 1px 0 #c9bba3; }
+#btnPass { left: 0; }
+#btnTake { right: 0; background: linear-gradient(#d65a42, var(--vermilion)); color: #fff; border-color: var(--vermilion-dark); box-shadow: 0 3px 0 var(--vermilion-dark), 0 6px 12px -6px rgba(0,0,0,.5); }
+#btnTake:disabled { background: linear-gradient(#c8bfb2, #b4ab9e); border-color: #8f867a; box-shadow: 0 3px 0 #8f867a; cursor: not-allowed; color: #f5f1ea; }
+#controls.up .btn { opacity: 1; transform: none; pointer-events: auto; }
+#skip {
+  position: absolute;
+  left: 50%; top: 545px;
+  transform: translateX(-50%);
+  z-index: 8;
+  font: inherit; font-size: 11px; font-weight: 900;
+  color: #5a3a22;
+  background: linear-gradient(#fbf3e3, #ecdcc0);
+  border: 1px solid rgba(90, 58, 34, .25);
+  border-radius: 999px;
+  padding: 3px 14px;
+  box-shadow: 0 2px 0 #c9b28c, 0 4px 8px -4px rgba(0,0,0,.4);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .2s, color .2s;
+}
+#skip:active { transform: translate(-50%, 1px); box-shadow: 0 1px 0 #c9b28c; }
+#skip.confirm { background: var(--vermilion); color: #fff; border-color: var(--vermilion-dark); box-shadow: 0 2px 0 var(--vermilion-dark); }
+#skip[hidden] { display: none; }

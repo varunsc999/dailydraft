@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 34 96">
+  <style>
+    .swing { transform-origin: 17px -6px; animation: swing 4.2s ease-in-out infinite; }
+    @keyframes swing { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+  </style>
+  <defs>
+    <radialGradient id="paper" cx=".45" cy=".45" r=".6">
+      <stop offset="0" stop-color="#ff9a6e"/>
+      <stop offset=".55" stop-color="#d9502f"/>
+      <stop offset="1" stop-color="#9c2d18"/>
+    </radialGradient>
+    <linearGradient id="cap" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a2416"/>
+      <stop offset="1" stop-color="#1e120a"/>
+    </linearGradient>
+  </defs>
+  <g class="swing">
+    <line x1="17" y1="-6" x2="17" y2="14" stroke="#1e120a" stroke-width="1.6"/>
+    <rect x="9" y="12" width="16" height="6" rx="1.5" fill="url(#cap)"/>
+    <ellipse cx="17" cy="42" rx="15.5" ry="25" fill="url(#paper)"/>
+    <g fill="none" stroke="#7d2413" stroke-opacity=".45" stroke-width=".8">
+      <path d="M3 30 Q17 26 31 30"/><path d="M1.8 36 Q17 32 32.2 36"/><path d="M1.5 42 Q17 38 32.5 42"/>
+      <path d="M1.8 48 Q17 44 32.2 48"/><path d="M3 54 Q17 50 31 54"/>
+    </g>
+    <text x="17" y="47" text-anchor="middle" font-family="Zen Maru Gothic, Yu Gothic, sans-serif" font-weight="700" font-size="12" fill="#2a120a" opacity=".7">皿</text>
+    <rect x="9" y="65" width="16" height="6" rx="1.5" fill="url(#cap)"/>
+    <path d="M17 71 V86" stroke="#c99a35" stroke-width="2.6" stroke-linecap="round"/>
+  </g>
+</svg>

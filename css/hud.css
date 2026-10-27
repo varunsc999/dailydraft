@@ -1,0 +1,116 @@
+/* Top bar, streak lanterns, order tickets and the chef's speech bubble. */
+
+/* ─── HUD ─── */
+#hud {
+  position: absolute;
+  top: 5px; left: 12px; right: 12px;
+  display: flex; gap: 5px;
+  z-index: 20;
+}
+.pill {
+  background: rgba(18, 11, 6, .7);
+  backdrop-filter: blur(4px);
+  color: #f3ebdc;
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 10.5px;
+  font-weight: 700;
+  display: flex; align-items: center; gap: 4px;
+  white-space: nowrap;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.pill b { font-weight: 900; font-size: 11.5px; }
+.ico { width: 15px; height: 15px; display: block; flex: none; }
+.pill.room-pill { margin-left: auto; background: rgba(34, 48, 90, .9); }
+/* "I'm full" lives in the top bar, away from the counter art */
+.pill.mode { background: rgba(201, 68, 46, .92); }
+.pill.audio { padding: 0 3px; gap: 0; }
+.pill.audio button { font: inherit; cursor: pointer; background: none; border: 0; padding: 3px 4px; display: grid; place-items: center; }
+.pill.audio i { width: 1px; height: 13px; background: rgba(255,255,255,.18); }
+.pill.mode.practice { background: rgba(90, 96, 104, .92); }
+#hudCash.bump { animation: bump .4s ease; }
+
+/* ─── ORDER TICKETS: what's on your tray ─── */
+#tickets { position: absolute; left: 38px; top: 25px; width: 284px; height: 50px; z-index: 4; pointer-events: none; }
+#tickets::before {
+  content: '';
+  position: absolute;
+  left: -4px; right: -4px; top: 6px;
+  height: 1.5px;
+  background: #1e120a;
+  box-shadow: 0 1px 0 rgba(255,255,255,.1);
+}
+.ticket { position: absolute; top: 4px; width: 52px; height: 42px; transform-origin: 50% 0; }
+.ticket.filled { animation: tsway 4.5s ease-in-out infinite; animation-delay: var(--d); }
+.ticket.new { animation: ticketIn .65s cubic-bezier(.3,1.5,.5,1); }
+@keyframes tsway { 0%, 100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
+@keyframes ticketIn {
+  0% { transform: translateY(-34px) rotate(-14deg); opacity: 0; }
+  55% { transform: rotate(7deg); opacity: 1; }
+  100% { transform: none; }
+}
+.ticket .pin {
+  position: absolute;
+  left: 50%; top: -1px;
+  width: 6px; height: 9px;
+  margin-left: -3px;
+  border-radius: 1.5px;
+  background: linear-gradient(90deg, #8a5d3a, #c9965f, #8a5d3a);
+  z-index: 2;
+}
+.ticket .slip {
+  position: absolute;
+  inset: 3px 0 0;
+  background: linear-gradient(#fffaf0, #f4ecdc);
+  border-top: 4px solid var(--plate);
+  border-radius: 1px 1px 3px 3px;
+  box-shadow: 0 3px 6px rgba(0,0,0,.4);
+  padding: 3px 4px 2px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.ticket .tn {
+  font-size: 7.6px; font-weight: 900; line-height: 1.08; color: #3a2414;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.ticket .tm { font-size: 6.6px; font-weight: 700; color: #8a7a62; display: flex; gap: 2px; justify-content: space-between; white-space: nowrap; }
+.ticket .tm span { overflow: hidden; text-overflow: ellipsis; }
+.ticket .tm b { font-family: var(--mono); color: var(--vermilion); font-weight: 500; flex: none; }
+.ticket.empty .slip {
+  background: rgba(255, 245, 230, .07);
+  border: 1px dashed rgba(255, 240, 220, .32);
+  box-shadow: none;
+  display: grid; place-items: center;
+  color: rgba(255, 240, 220, .45);
+  font-family: var(--mono); font-size: 9px;
+}
+@keyframes bump { 40% { transform: scale(1.3); color: #ffb39c; } }
+
+/* ─── CHEF SPEECH ─── */
+#bubble {
+  position: absolute;
+  left: 204px; bottom: 510px;
+  max-width: 150px;
+  background: var(--rice);
+  border-radius: 10px;
+  padding: 4px 9px;
+  font-size: 11px;
+  font-weight: 900;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+  opacity: 0;
+  transform: scale(.5) translateY(8px);
+  transform-origin: 0 100%;
+  transition: opacity .18s, transform .22s cubic-bezier(.3,1.5,.5,1);
+  z-index: 16;
+  line-height: 1.25;
+}
+#bubble.tip { background: #fff4d6; box-shadow: 0 0 0 2px var(--vermilion), 0 4px 12px rgba(0,0,0,.3); }
+#bubble.tip::after { border-top-color: #fff4d6; }
+#bubble::after {
+  content: '';
+  position: absolute;
+  left: 6px; bottom: -5px;
+  border: 5px solid transparent;
+  border-top-color: var(--rice);
+  border-bottom: 0;
+}
+#bubble.show { opacity: 1; transform: none; }

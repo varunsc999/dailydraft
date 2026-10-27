@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-540 0 1440 482">
+  <!-- Drawn 1440 wide and 482 tall around the 360×372 phone view; phones only see the middle. -->
+  <style>
+    .steam { animation: steam 2.8s ease-in-out infinite; opacity: 0; }
+    .s2 { animation-delay: 1.4s; }
+    @keyframes steam {
+      0% { transform: translateY(4px); opacity: 0; }
+      40% { opacity: .55; }
+      100% { transform: translateY(-12px); opacity: 0; }
+    }
+  </style>
+  <defs>
+    <linearGradient id="ledge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7a4a29"/>
+      <stop offset="1" stop-color="#55331b"/>
+    </linearGradient>
+    <linearGradient id="rail" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f1f3f5"/>
+      <stop offset=".35" stop-color="#c3c9d0"/>
+      <stop offset=".7" stop-color="#959ca6"/>
+      <stop offset="1" stop-color="#6f7680"/>
+    </linearGradient>
+    <linearGradient id="hinoki" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e2c393"/>
+      <stop offset=".5" stop-color="#ead0a6"/>
+      <stop offset="1" stop-color="#d5b17d"/>
+    </linearGradient>
+    <linearGradient id="slat" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#cdbb7c"/>
+      <stop offset=".45" stop-color="#e6d79f"/>
+      <stop offset="1" stop-color="#c2ae6e"/>
+    </linearGradient>
+    <pattern id="slats" width="8" height="10" patternUnits="userSpaceOnUse">
+      <rect width="8" height="10" fill="url(#slat)"/>
+      <rect x="7.3" width=".7" height="10" fill="#9c8a4f"/>
+    </pattern>
+    <linearGradient id="glaze" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5e6d58"/>
+      <stop offset=".35" stop-color="#93a38b"/>
+      <stop offset="1" stop-color="#55634f"/>
+    </linearGradient>
+    <linearGradient id="lacquer" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8f2a20"/>
+      <stop offset="1" stop-color="#5c1712"/>
+    </linearGradient>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#5a3a14" flood-opacity=".35"/>
+    </filter>
+    <linearGradient id="dishWall" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d8d0c2"/>
+      <stop offset=".35" stop-color="#fbf8f2"/>
+      <stop offset="1" stop-color="#c9c0b0"/>
+    </linearGradient>
+    <linearGradient id="dishRim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e6dfd2"/>
+    </linearGradient>
+    <linearGradient id="dishWell" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cfc6b6"/>
+      <stop offset="1" stop-color="#f4efe6"/>
+    </linearGradient>
+    <radialGradient id="soy" cx=".5" cy=".7" r=".7">
+      <stop offset="0" stop-color="#5a2a12"/>
+      <stop offset=".7" stop-color="#2e1308"/>
+      <stop offset="1" stop-color="#1a0a04"/>
+    </radialGradient>
+  </defs>
+
+  <!-- sushi bar ledge behind the belt -->
+  <rect x="-540" width="1440" height="32" fill="url(#ledge)"/>
+  <rect x="-540" width="1440" height="2.5" fill="#94603a"/>
+  <rect x="-540" y="28" width="1440" height="4" fill="#000" opacity=".3"/>
+
+  <!-- belt rails (the moving belt is drawn on top by the page) -->
+  <rect x="-540" y="32" width="1440" height="8" fill="url(#rail)"/>
+  <rect x="-540" y="40" width="1440" height="56" fill="#2c3036"/>
+  <rect x="-540" y="96" width="1440" height="14" fill="url(#rail)"/>
+  <rect x="-540" y="97" width="1440" height="1.2" fill="#fff" opacity=".8"/>
+  <rect x="-540" y="110" width="1440" height="5" fill="#000" opacity=".22"/>
+  <rect x="168" y="100" width="24" height="7" rx="3.5" fill="#c4432d"/>
+  <path d="M176 105 L180 101.5 L184 105" stroke="#fff" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+
+  <!-- counter top -->
+  <rect x="-540" y="111" width="1440" height="371" fill="url(#hinoki)"/>
+  <g fill="none" stroke="#b98f5c" stroke-opacity=".28" stroke-width="1">
+    <path d="M-540 140 Q-300 134 -60 141 T420 138 T900 140"/>
+    <path d="M-540 196 Q-300 202 -60 195 T420 199 T900 196"/>
+    <path d="M-540 262 Q-300 256 -60 263 T420 259 T900 262"/>
+    <path d="M-540 330 Q-300 336 -60 329 T420 333 T900 330"/>
+    <path d="M-540 410 Q-300 404 -60 411 T420 407 T900 410"/>
+  </g>
+  <rect x="-540" y="111" width="1440" height="14" fill="#000" opacity=".07"/>
+
+  <!-- other seats along the bar (wide screens). Their mats, plate stacks, drinks and condiments are drawn by the page so they can change. -->
+  <g transform="translate(-492 0)">
+    <ellipse cx="92" cy="268" rx="26" ry="6.5" fill="#000" opacity=".12"/>
+    <path d="M-104 352 L60 345" stroke="url(#lacquer)" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M-104 359 L60 353" stroke="url(#lacquer)" stroke-width="3.4" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(-204 0)">
+    <ellipse cx="92" cy="268" rx="26" ry="6.5" fill="#000" opacity=".12"/>
+    <path d="M-104 352 L60 345" stroke="url(#lacquer)" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M-104 359 L60 353" stroke="url(#lacquer)" stroke-width="3.4" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(564 0)">
+    <ellipse cx="92" cy="268" rx="26" ry="6.5" fill="#000" opacity=".12"/>
+    <path d="M-104 352 L60 345" stroke="url(#lacquer)" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M-104 359 L60 353" stroke="url(#lacquer)" stroke-width="3.4" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(852 0)">
+    <ellipse cx="92" cy="268" rx="26" ry="6.5" fill="#000" opacity=".12"/>
+    <path d="M-104 352 L60 345" stroke="url(#lacquer)" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M-104 359 L60 353" stroke="url(#lacquer)" stroke-width="3.4" stroke-linecap="round"/>
+  </g>
+
+  <!-- bamboo rolling mat -->
+  <g filter="url(#soft)">
+    <rect x="56" y="124" width="248" height="148" rx="3" fill="url(#slats)"/>
+  </g>
+  <path d="M56 162 H304 M56 234 H304" stroke="#76643a" stroke-width="1.3"/>
+  <path d="M56 162 H304 M56 234 H304" stroke="#d9c88f" stroke-width=".5" transform="translate(0 -1)"/>
+
+  <!-- tea cup, left of the mat -->
+  <path class="steam" d="M20 132 q-4 -6 0 -12 q4 -6 0 -12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+  <path class="steam s2" d="M34 132 q-4 -6 0 -12 q4 -6 0 -12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+  <ellipse cx="29" cy="181.6" rx="18" ry="3.4" fill="#000" opacity=".2"/>
+  <path d="M7 138 L11 180 Q27 186 43 180 L47 138Z" fill="url(#glaze)"/>
+  <ellipse cx="27" cy="138" rx="20" ry="5" fill="#4f5d4a"/>
+  <ellipse cx="27" cy="138.5" rx="16.5" ry="3.6" fill="#a9b26a"/>
+  <text x="27" y="166" text-anchor="middle" font-family="Zen Maru Gothic, Yu Gothic, sans-serif" font-weight="700" font-size="13" fill="#2b3529" opacity=".8">選</text>
+
+  <!-- where your plates stack -->
+  <ellipse cx="336" cy="268" rx="24" ry="6.5" fill="#000" opacity=".12"/>
+
+  <!-- soy dish bottom-left; chopsticks the same length as the other seats', just under the "I'm full" button -->
+  <g transform="translate(36 346)">
+      <ellipse cx="0" cy="6.0" rx="21.0" ry="4.6" fill="#000" opacity=".16"/>
+      <path d="M-11.0 3.4 L-9.4 6.6 Q0 8.8 9.4 6.6 L11.0 3.4Z" fill="#cfc6b6"/>
+      <path d="M-19.0 0 Q-18.0 6.0 0 6.4 Q18.0 6.0 19.0 0Z" fill="url(#dishWall)"/>
+      <ellipse cx="0" cy="0" rx="19.0" ry="5.6" fill="url(#dishRim)"/>
+      <ellipse cx="0" cy="0.5" rx="15.0" ry="4.0" fill="url(#dishWell)"/>
+      <ellipse cx="0" cy="1.0" rx="12.6" ry="3.0" fill="url(#soy)"/>
+      <ellipse cx="-4.0" cy="0.2" rx="4.6" ry="0.8" fill="#fff" opacity=".28"/>
+      <path d="M-17.0 -1.6 Q-10.0 -5.0 -2.0 -5.4" stroke="#fff" stroke-width="0.9" fill="none" opacity=".8" stroke-linecap="round"/>
+      <path d="M-16.0 2.6 Q-12.0 4.6 -6.0 5.4" stroke="#4473b4" stroke-width="0.8" fill="none" opacity=".55"/>
+    </g>
+  <rect x="104" y="348" width="14" height="7" rx="3.5" fill="#e9e3d6"/>
+  <path d="M98 353 L262 346" stroke="url(#lacquer)" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M98 360 L262 354" stroke="url(#lacquer)" stroke-width="3.4" stroke-linecap="round"/>
+</svg>
